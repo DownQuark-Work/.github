@@ -1,8 +1,23 @@
 # DownQuark Doqumentation
+## Subheading
+### And a third
 
 > Just some docs
 > > and an ascii image
 
+- [ ] a
+- [x] b
+- [ ] ac
+
+---
+
+Have to really re3ally check | Check
+:-:|-:
+does|this
+work at| all?
+a|b
+
+---
 
 ```bash
 ____________________________________________________
