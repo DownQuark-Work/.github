@@ -1,0 +1,88 @@
+.smol.article.anchor {
+  display: grid;
+  grid-template-columns: min-content auto;
+  margin-top: 2em;
+  position: relative;
+  /* You could pull this property out and generalize it under the selector `[id]` as
+    it won't affect flow layout or regular margins */
+  scroll-margin-top: 2em;
+
+  & a {
+    grid-row-start: 1;
+    align-self: start;
+    font-size: 1rem;
+    line-height: 1;
+    transform: translateX(-50%) translateY(25%);
+    text-decoration: none;
+    opacity: 0.75;
+  
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
+      opacity: 1;
+    }
+    
+    &:focus {
+      outline: 2px solid currentColor;
+      outline-offset: 0.15em;
+    }
+  }
+
+  &:target::before {
+    content: var(--dq-anchor-target-content, "√ viewed");
+    position: absolute;
+    font-size: .9rem;
+    top: -1.25rem;
+    left: 0;
+    font-style: italic;
+    color: currentColor;
+  }
+  /* Visually hidden while remaining accessible to assistive tech like screen readers */
+  &.hidden {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+  }
+}
+
+.smol.centered {
+  display: grid;
+  place-content: center;
+}
+
+.smol.grid:not(.flexbox) {
+  display: grid;
+  grid-gap: var(--dq-grid-gap-sizing,var(--downquark-scale-size-s));
+  /* min() with 100% prevents overflow in extra narrow spaces */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--dq-grid-col-width-sizing,15ch)), 1fr));
+}
+
+.smol.grid.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dq-grid-gap-sizing,var(--downquark-scale-size-s));
+  
+  > * {
+    flex: 1 1 var(--dq-grid-col-width-sizing,10ch);
+  }
+}
+
+.smol.visited a {
+  & span {
+    margin-right: 0.25em;
+    float: left;
+    &::after {
+      color:var(--dq-visited-link-background-color, var(--downquark-color-background-accent));
+      content: var(--dq-visited-link-content, "✔");
+    }
+  }
+  &:visited span::after {
+    color: var(--dq-visited-link-color, var(--downquark-coloxr-text-accent));
+  }
+}
+
+/* 
+* Included references for completeness but not implemented due to scope being too narrow for this level of abstraction:
+* - https://smolcss.dev/#smol-transitions
+*/

@@ -1,0 +1,22 @@
+.dq-work {
+  &.path{
+    &.hex {
+      &.background.animation {
+        aspect-ratio: 1;
+        background: radial-gradient(50.00% 50.00% at 50% 50%,var(--downquark-color-background-primary),var(--dq-work-color-bg-animation, var(--downquark-color-background-accent)) 100%);
+        border: 1px solid var(--downquark-color-background-primary);
+        clip-path: var(--downquark-shape-hexagon-clip-path);
+        block-size: 200px;
+        opacity: 0.22;
+        inline-size: 185px;
+        &.design { --dq-work-color-bg-animation: var(--dq-work-color-tile-design) }
+        &.development { --dq-work-color-bg-animation: var(--dq-work-color-tile-development) }
+        &.foss { --dq-work-color-bg-animation: var(--dq-work-color-tile-foss) }
+        &.stealth { --dq-work-color-bg-animation: var(--dq-work-color-tile-stealth) }
+        &.blog { --dq-work-color-bg-animation: var(--dq-work-color-tile-blog) }
+        &.forum { --dq-work-color-bg-animation: var(--dq-work-color-tile-forum) }
+        &.miscellaneous { --dq-work-color-bg-animation: var(--dq-work-color-tile-miscellaneous) }
+      }
+    }
+  }
+}

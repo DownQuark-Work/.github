@@ -1,0 +1,81 @@
+@import url('/styles/_particles/_base/downquark-classless.css');
+
+@keyframes animrotation {
+  from {transform: rotate(0deg)}
+  to {transform: rotate(359deg)}
+}
+
+:host { block-size: var(--dq-work-size-filter-molecule, 18.75rem); inline-size: var(--dq-work-size-filter-molecule, 18.75rem); display: inline-block; }
+.dq-work {
+  &.molecule{
+    &.filter { /* The filtering and loading component */
+      &.wrapper {
+        block-size: var(--dq-work-size-filter-molecule, 18.75rem);
+        display: flex;
+        inline-size: var(--dq-work-size-width-filter-molecule, 18.75rem);
+        position: absolute;
+
+        &.loading {
+          animation: animrotation 5s infinite alternate;
+          pointer-events: none;
+        }
+
+        & dq_work-atom-hexagon {
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          left: calc(1rem * var(--dq-work-position-offset-feature-hexagon));
+          position: absolute;
+          top: calc(1.125rem * var(--dq-work-position-offset-feature-hexagon));
+          z-index: var(--dq-work-position-offset-feature-hexagon);
+          &:hover ~ mark{
+            display: block;
+            &::after,&::before {
+            display: block;
+          }}
+        }
+
+        & mark {
+          display: none;
+          color: var(--dq-work-color-feature-category-label-text);
+          height: 2.9ch;
+          margin:0 1.25ch;
+          position: absolute;
+          text-align: center;
+          width:12ch;
+          z-index: 10;
+        
+          &::after {
+            display: none;
+            block-size: 100%;
+            border-color: var(--dq-work-color-feature-category-rollover) transparent transparent transparent;
+            border-style: solid;
+            border-width: 3ch 1.5ch 0 0;
+            top: 0;
+            content: " ";
+            right: -1.4ch;
+            position: absolute;
+          }
+          &::before {
+            display: none;
+            block-size: 100%;
+            border-color: transparent transparent var(--dq-work-color-feature-category-rollover) transparent;
+            border-style: solid;
+            border-width: 0 0 3ch 1.5ch;
+            bottom: 0;
+            content: " ";
+            left: -1.4ch;
+            position: absolute;
+          }
+        }
+      }
+      /* filter on main page */
+      & mark {
+        left:-7rem;
+        top:8.25rem;
+        rotate:-90deg;
+      }
+      /* end filter on main page */
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"><title>DownQuark - conceptual development</title><meta name="description" content="make"/><meta name="keywords" content="downquark"/><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💡</text></svg>"><link href="https://fonts.googleapis.com/css?family=Barlow:400,500,700|Playfair+Display" rel="stylesheet"><link rel="stylesheet" type="text/css" href="v0/css/base.css"/><link rel="stylesheet" type="text/css" href="v0/css/demo1.css"/><link rel="stylesheet" type="text/css" href="v0/css/qrk.css"/><script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root:{--tmp-var: bold;}",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+		<!-- Matomo --><script>var _paq = window._paq = window._paq || [];/* tracker methods like "setCustomDimension" should be called before "trackPageView" */_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);(function() {var u="//analytics.downquark.work/";_paq.push(['setTrackerUrl', u+'matomo.php']);_paq.push(['setSiteId', '1']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);})();</script><!-- End Matomo Code -->
+	</head><body class="demo-1">
+		<p>
+			https://ishadeed.com/article/comment-component/
+			<br/>
+			https://tympanus.net/codrops/2013/05/02/vertical-timeline/
+			<br/>
+			https://designsystemcanvas.com/
+			<br/>
+			https://www.marktechpost.com/2023/03/12/best-ai-tools-for-web-designers-2023/
+			<br/>
+			https://gitmoji.dev/
+			<br/>
+			https://ishadeed.com/article/conditional-css-has-nth-last-child/#grid-that-changes-based-on-the-number-of-child-items
+			<br/>
+			https://ishadeed.com/article/conditional-css-has-nth-last-child/#user-avatars
+			<br/>
+			https://www.nerdfonts.com/assets/css/webfont.css
+<br>
+		</p>
+		<main><div class="content content--fixed"><div class="content"><canvas class="scene scene--full" id="scene"></canvas><script type="x-shader/x-vertex" id="wrapVertexShader">attribute float size;attribute vec3 color;varying vec3 vColor;void main(){vColor=color;vec4 mvPosition=modelViewMatrix * vec4( position, 1.0 );gl_PointSize=size * ( 350.0 / - mvPosition.z );gl_Position=projectionMatrix * mvPosition;}</script><script type="x-shader/x-fragment" id="wrapFragmentShader">varying vec3 vColor;uniform sampler2D texture;void main(){vec4 textureColor=texture2D( texture, gl_PointCoord );if ( textureColor.a < 0.3 ) discard;vec4 color=vec4(vColor.xyz, 1.0) * textureColor;gl_FragColor=color;}</script><div class="content__inner"><h2 class="content__title">DownQuark</h2><h3 class="content__subtitle">conceptual development</h3><hr style="visibility:hidden"><h3 class="content__subtitle" style="background-color:#ffffff33; color:#000000ee">available soon</h3><p>view our <a href="v0/" style="text-decoration:underline">archived site</a></p></div></div></main><div class="qrk-containers"><footer><a name="footer"></a>&copy; downquark.work 2023</footer></div><script src="v0/js/demo.js"></script><script src="v0/js/three.min.js"></script><script src="v0/js/TweenMax.min.js"></script><script src="v0/js/demo1.js"></script></body></html>

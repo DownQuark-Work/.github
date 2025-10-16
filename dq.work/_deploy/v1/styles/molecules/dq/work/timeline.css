@@ -1,0 +1,57 @@
+:host(dq_work-molecule-timeline.dq-work.molecule.has-animation[content-path$="json"]) {top:0 !important;}
+:host(dq_work-molecule-timeline:hover) { --hit-area-hover-timeline:45ch !important; }
+
+ul.dq-work {
+  &.molecule {
+    &.timeline { /* timeline molecule */
+      &.wrapper { /* ul element */
+        block-size: inherit;
+        overflow-y: scroll;
+        padding: 0;
+        position: absolute;
+        inline-size: 160px;
+        &:has(li:hover){
+          width: 100%;
+        }
+        & li {
+          list-style-type: none;
+          &:nth-child(even) {
+            block-size: calc(var(--dq-work-size-width-element-hex-tile) / 1.8);
+            left: calc(var(--dq-work-size-width-element-hex-tile) / 1.85);
+            position: relative;
+            top: calc(var(--dq-work-size-width-element-hex-tile) / -2.85);
+          }
+          &:hover mark[slot="tile-title"] {
+            left: calc(100% - 0.75rem);
+            opacity: 1;
+          }
+        }
+
+        [as-a*="tile"] {
+          &:hover,.selected{
+            filter: brightness(1.4);
+          }
+          & span[slot="tile-date"]{ 
+            background-color: inherit;
+            z-index: 12;
+          }
+          & mark[slot="tile-title"]{
+            left: 150%;
+            opacity: 0;
+            pointer-events: none;
+            text-wrap: nowrap;
+            transition-duration: .25s;
+            transition-property: left, opacity;
+            transition-timing-function: ease-in;
+
+            &::after{ border-width: 2.7ch 1.5ch 0 0; }
+
+            .timeline-external-prefix {
+              padding-right:.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

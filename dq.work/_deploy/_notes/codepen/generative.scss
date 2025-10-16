@@ -1,0 +1,228 @@
+// https://medium.com/hypersphere-codes/counting-in-css-unlock-magic-of-css-variables-8e610881097a
+// https://medium.com/hypersphere-codes/randomness-in-css-b55a0845c8dd
+
+// Counters
+@mixin binaryCounter($selector: "div", $bits: 4) {
+  :root {
+    @for $i from 0 to $bits {
+      --b#{$i}: 0;
+    }
+  }
+
+  $exponent: 1;
+  $eq: "0";
+  @for $i from 0 to $bits {
+    $exponent: 2 * $exponent;
+    $eq: $eq + " + #{$exponent/2} * var(--b#{$i})";
+    @for $j from 0 to $exponent/2 {
+      #{$selector}:nth-child(#{$exponent}n - #{$j}) {
+        --b#{$i}: 1;
+      }
+    }
+  }
+  #{$selector} {
+    --n: calc(#{$eq});
+  }
+}
+
+@function isPrime($n, $primesList) {
+  @each $prime in $primesList {
+    @if ($n % $prime == 0) {
+      @return false;
+    }
+  }
+  @return true;
+}
+
+@mixin primeCounter($selector, $upperBound: 2000) {
+  $curr: 2;
+  $primesList: [];
+
+  @while $curr <= $upperBound {
+    @if isPrime($curr, $primesList) {
+      $primesList: append($primesList, $curr);
+    }
+    $curr: $curr + 1;
+  }
+  :root {
+    @each $prime in $primesList {
+      --p#{$prime}: 1;
+    }
+  }
+  $mult: "1";
+  @each $prime in $primesList {
+    $mult: $mult " * var(--p#{$prime})";
+    $val: $prime;
+    @while $val <= $upperBound {
+      #{$selector}:nth-child(#{$val}n) {
+        --p#{$prime}: #{$val};
+      }
+      $val: $val * $prime;
+    }
+  }
+
+  #{$selector} {
+    --n: calc(#{$mult});
+  }
+}
+
+@property --floor {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: true; /* or false depending on context */
+}
+
+// RNG
+/* .selector {
+  --x0: calc(var(--n) * 1.334 + var(--n) * var(--n) * 0.5325 + 0.235);
+  --floor: calc(var(--x0) - .5);
+  --x: calc(var(--x0) - var(--floor));
+}
+/*
+`--x` will be between 0 - 1
+To mutate for something usable:
+\[NUMERICAL]
+> formula: `calc(a + var(--x) * (b-a));`
+```
+// will convert to value of 50px - 150px
+width: calc(50px + var(--x) * 100px);
+```
+---
+\[COLOR]
+Same as above, except pick single (or multiple) values to randomize:
+```
+.selector {
+  background-color: rgb(calc(127 + var(--x) * 127, 0, 0);
+  border-color: hsla(calc(80 + var(--r) * 170), 80%, 50%);`
+  color: hsl(calc(80 + var(--r) * 170), calc(var(--r) * 100%), 50%);
+}
+*/
+
+// USAGES:
+// For Binary Example
+// - best used with 2nd arg <= 8
+// - greater acccuracy for <= 256 items
+/*
+@include binaryCounter('div', 8);
+//  // - attempt to keep 2nd arg ~= 8
+
+body {
+  background: #333;
+}
+div {
+  --size: calc(var(--n) * 100vh / 256);
+  width: var(--size);
+  height: var(--size);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: hsl(calc(0 + 50*var(--n)), 90%, 70%);
+  z-index: calc(100 - var(--n));
+  transform: translate(-50%,-50%);
+} 
+/* */
+
+// For Primes Example
+// - 2nd arg has ceiling of 500
+// - less accurate but nothing noticeable for anything we'd be doing
+//  -missed primes, some selectors may target multiple items
+/*
+@include primeCounter('div', 500);
+
+body {
+  font-size: 0;
+}
+div {
+  width: 50px;
+  height: 50px;
+  background: hsl(calc(20 + 5 * var(--n)), 70%, 60%);
+  display: inline-block;
+}
+
+div:after {
+  counter-reset: variable var(--n);
+  content: counter(variable);
+  font-size: 15px;
+  font-family: sans-serif;
+}
+/* */
+
+// FULL EXAMPLE
+// - uses RNG, Generated counts, floor. neatness
+/*
+@include primeCounter("div", 500);
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  width: 80vw;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background-size: 100vw 100vh;
+  background-image: linear-gradient(65deg, hsl(200, 20%, 50%), hsl(226, 80%, 30%));
+}
+
+@property --floorVariant {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: true
+}
+
+@property --floorColor {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: true
+}
+
+@property --x1 {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: true
+}
+
+@property --x2 {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: true
+}
+
+@property --x3 {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: true
+}
+
+@property --x4 {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: true
+}
+
+div {
+  --variantRandFloat: calc(var(--n) * .34314541 + var(--n) * var(--n) * 0.9125 + 0.435);
+  --colorRandFloat: calc(var(--n) * .44541 + var(--n) * var(--n) * 0.3125 + 0.4354);
+  --floorColor: calc(var(--colorRandFloat) - 0.5);
+  --colorRNG: calc(var(--colorRandFloat) - var(--floorColor)); // --colorRNG is beween 0 - 1
+  --floorVariant: calc(var(--variantRandFloat) - 0.5);
+  --variantRNG: calc(var(--variantRandFloat) - var(--floorVariant));
+  --x1: calc(max(min(4 * var(--variantRNG), 1), 0));
+  --x2: calc(max(min(5 * var(--variantRNG) - 3, 1), 0));
+  --x3: calc(max(min(9 * var(--variantRNG) - 4, 1), 0));
+  --x4: calc(max(min(10 * var(--variantRNG) - 7, 1), 0));
+  width: min(5vw, 10vh);
+  margin: calc(0.2vw);
+  aspect-ratio: 1;
+  border-radius: calc(var(--x1) * 50%) calc(var(--x2) * 50%) calc(var(--x3) * 50%) calc(var(--x4) * 50%);
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  display: inline-block;
+  // background: hsl(
+  //   calc(var(--n) / 200 * 360),
+  //   80%,
+  //  50%);
+  --color: calc(150 + var(--colorRNG) * 90);
+  background: linear-gradient(calc(360deg * var(--n) / 200), hsl(var(--color), 50%, 50%), hsl(var(--color), 70%, 80%));
+}
+
+/* */

@@ -1,0 +1,22 @@
+.dq-work {
+  & h1,h2,h3,h4,h5,h6 {
+    --dq-work-color-header-background: var(--downquark-color-brand-red);
+    --dq-work-color-header-text:var(--downquark-color-background-primary);
+    background-color: var(--dq-work-color-header-background);
+    color: var(--dq-work-color-header-text);
+    &::after { border-color: var(--dq-work-color-header-background) transparent transparent transparent; }
+    &::before { border-color: transparent transparent var(--dq-work-color-header-background) transparent; }
+
+    &:is(h1)::before { border-color: transparent var(--dq-work-color-header-background) transparent transparent; }
+  }
+
+  & h4,h5,h6 { /* below implementation allows us to keep our size scale */
+    &:is(h4){ --downquark-scale-size-to-percent: 100; }
+    &:is(h5){ --downquark-scale-size-to-percent: 200; }
+    &:is(h6){ --downquark-scale-size-to-percent: 300; }
+    --downquark-scale-size-percentage-clamp-value: calc(calc(var(--downquark-scale-size-to-percent) * var(--downquark-scale-size-single-percent)) + .25rem);
+    --downquark-scale-size-percentage: var(--downquark-scale-size-percentage-clamp-value);
+
+    width:calc(100% - var(--downquark-scale-size-percentage));
+  }
+}

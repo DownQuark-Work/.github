@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dqwork namespace</title>
+  <link rel="stylesheet" href="/styles/_namespace/dq-work.css" />
+
+      <!-- Polyfill CSS/JSON module imports -->
+      <script>window.esmsInitOptions = { polyfillEnable: ['css-modules', 'json-modules'] }</script>
+      <script async src="https://ga.jspm.io/npm:es-module-shims@1.5.4/dist/es-module-shims.js"></script>
+      <script async src="https://unpkg.com/construct-style-sheets-polyfill@3.1.0/dist/adoptedStyleSheets.js"></script>
+  
+      <!-- Add import for Lit, etc. -->
+      <script type="importmap">
+        {
+          "imports": {
+            "lit": "https://ga.jspm.io/npm:lit@2.2.3/index.js",
+            "lit/directives/style-map.js":"https://ga.jspm.io/npm:lit-html@2.2.3/directives/style-map.js",
+            "lit/directives/class-map.js":"https://ga.jspm.io/npm:lit-html@2.2.3/directives/class-map.js",
+            "lit/directives/map.js":"https://ga.jspm.io/npm:lit-html@2.2.3/directives/map.js",
+            "lit/directives/unsafeHtml": "https://ga.jspm.io/npm:lit-html@2.2.3/directives/unsafe-html.js"
+          },
+          "scopes": {
+            "https://ga.jspm.io/": {
+              "@lit/reactive-element": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.2/development/reactive-element.js",
+              "lit-element/lit-element.js": "https://ga.jspm.io/npm:lit-element@3.2.0/development/lit-element.js",
+              "lit-html": "https://ga.jspm.io/npm:lit-html@2.2.3/development/lit-html.js",
+              "directive.js": "https://ga.jspm.io/npm:lit-html@2.2.3/directive.js"
+            }
+          }
+        }
+      </script>
+      <script src="/components/_dq.js" type="module"></script>
+  <style>
+    /* 
+    * Overrides for the styleguide page to render correctly.
+    * These are specific to this page alone and
+    * _should **NOT**_ be included in any heirarchical import 
+    */
+    [data-can-resize] {
+      position: relative; resize: horizontal; overflow: auto;
+      &::after { bottom:-.5rem; color:var(--downquark-color-base-amber-200); content: "↔︎"; font-size:x-large; padding:0 .1rem; position:absolute; right:.2rem; }
+    }
+    h4:has(code) {
+      &::after {
+        border-width: 2.5ch 1.5ch 0 0;
+      }
+      &::before {
+        border-width: 0 0 2.5ch 1.5ch;
+      }
+    }
+    details{ background-color: var(--downquark-color-background-primary); }
+    details blockquote code { background-color: var(--downquark-color-background-accent); }
+    details:has(code:nth-child(2)):not(:has(blockquote)) code {
+      background-color: var(--downquark-color-background-accent);
+      display: inline-block;
+      inline-size: calc(50% - .25rem);
+      max-block-size: 12rem;
+      overflow: auto;
+      white-space: pre;
+    }
+    details:has(code:nth-child(4)):not(:has(blockquote)) code:last-child { inline-size: 100%; }
+    details[open]:has(summary small) details:not([open]) { margin-bottom: 0 }
+    input[name^="visible"] { display: none; pointer-events: none;}
+    input[name^="visible"]:checked { margin-bottom:2.75rem; }
+    input[name^="visible"]:checked + div[data-is-visible^="visible"] {
+      display: none;
+      > a[name] { display:none; }
+    }
+    label[for^="visible"] {
+      background: var(--downquark-color-base-gray-600);
+      border-radius: .25rem;
+      color: var(--downquark-color-brand-purple);
+      display: inline;
+      font-weight: 800;
+      left: 1.5rem;
+      padding: 0.125rem 0.5rem;
+      position: relative;
+      top: -3.5rem;
+    }
+    label[for^="visible"] span::before { content: "Hide "; }
+    label[for^="visible"]:has(+ input[name^="visible"]:checked) span::before { content: "Show "; }
+    mark::after { border-width: 2.7ch 1.5ch 0 0; }
+    mark::before { border-width: 0 0 2.8ch 1.5ch; }
+    nav table a {
+      & span { float:right; margin-right:1rem; }
+      &:hover span { color: var(--downquark-color-text-primary)}
+    }
+    
+    .content.interactions.show-mark-description-on-hover {
+        padding:0;
+        position:relative;
+        & li {
+          list-style:none;
+        }
+        & mark:not([slot]) {
+          background-color: var(--downquark-color-brand-purple);
+          border: 1px solid black;
+          color: var(--downquark-color-base-gray-200);
+          font-weight: 600;
+          left:2rem;
+          opacity: 0;
+          position: relative;
+          top:-2rem;
+          transition-duration: .2s;
+          transition-property: opacity;
+          width: max-content;
+          z-index: 3;
+          &::after{ border-width: 2.8ch 1.5ch 0 0; border-color: var(--downquark-color-brand-purple) transparent transparent transparent;}
+          &::before{ border-width: 0 0 2.8ch 1.5ch; border-color: transparent transparent var(--downquark-color-brand-purple) transparent;}
+        }
+        .dq-work.element,
+        dq_work-atom-hexagon { &:hover ~ mark { opacity: 1; } }
+      }
+  </style>
+</head>
+
+<body>
+  <h1>namespace: dq-work</h1>
+  <blockquote>The following contains classes that are used on the main <a href="https://v1.downquark.work/">downquark.work</a> site.
+    <blockquote>
+      The styles included here will likely be <em>one-offs</em> for the main website.
+    </blockquote>
+  </blockquote>
+  <p>
+    In addition to the styles outlined on this page there are also some new <a href="./tokens.html">Design Tokens</a> that will be integrated.
+  </p>
+
+  <h3><a href="https://andy-bell.co.uk/cube-css/" target="_blank" rel="noopener noreferrer">Cube CSS</a></h3>
+  <p>Only overrides and new styles will be included.</p>
+  
+  <a name="cube-block"></a>
+  <h4>Block</h4>
+  <!-- https://cube.fyi/block.html -->
+  <label for="visible-cube-block"><span></span> Cube Block Styling</label>
+  <input type="checkbox" name="visible-cube-block" id="visible-cube-block" checked />
+  <div data-is-visible="visible-cube-block">
+  <!-- wrapper -->
+  <a name="post"></a>
+  <h4><a href="#post"><code>&lt;post&gt;</code></a></h4>
+  <details>
+    <summary>layout for post content</summary>
+    <small><em>TODO: </em> Add images that show up in hex bordered frames and break the <mark>wrapper</mark> constraint.</small>
+    <div>
+    </div>
+    <div class="[ cube :: wrapper ]">
+      <div class="[ dq-work cube > block ] [ post ]">
+        <div class="[ dq-work ] [ selected-category design ]">
+          <h2>Design H2</h2>
+          <p>post content</p>
+          <p>post content</p>
+        </div>
+        <div class="[ dq-work ] [ selected-category development ]">
+          <h3>Development H3</h3>
+          <p>post content</p>
+          <p>post content</p>
+        </div>
+        <div class="[ dq-work ] [ selected-category foss ]">
+          <h4>Foss H4</h4>
+          <p>post content</p>
+          <p>post content</p>
+        </div>
+        <div class="[ dq-work ] [ selected-category stealth ]">
+          <h5>Stealth H5</h5>
+          <p>post content</p>
+          <p>post content</p>
+        </div>
+        <div class="[ dq-work ] [ selected-category forum ]">
+          <h6>Forum H6</h6>
+          <p>post content</p>
+          <p>post content</p>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details>
+    <summary><small>show code</small></summary>
+    <code>/* CSS */
+.dq-work.cube.block.post {
+  /* subheaders */
+  :is(h2,h3,h4,h5,h6) {
+    /* keeps visual flow but reduces sizes for certain subhead instances */
+    &:is(h2) { font-size: var(--downquark-size-font-ramp-3); } 
+    &:is(h3,h4) { font-size: var(--downquark-size-font-ramp-2); }
+    
+    /* first paragraph _after_ subheader */
+    + p {
+      font-size: calc(var(--downquark-size-font-primary) + .125rem);
+      font-weight: 600;
+      letter-spacing: calc(.125rem / 2); /* .0625rem */
+      position: relative;
+      
+      --dq-work-size-first-letter: calc((var(--downquark-size-font-primary) + .125rem) * 2);
+      &::first-letter {
+        background-color: var(--downquark-color-background-primary);
+        color: var(--downquark-color-text-accent);
+        font-size: var(--dq-work-size-first-letter);
+        line-height: var(--dq-work-size-first-letter);
+        padding-inline-end: .125rem;
+        text-transform: uppercase;
+      }
+
+      &::after {
+        content:" ";
+        background-color: var(--downquark-color-text-accent);
+        clip-path: var(--downquark-shape-hexagon-clip-path-hollow);
+        height: calc(var(--dq-work-size-first-letter) * .85);
+        left: -1.5ch;
+        position: absolute;
+        opacity: .5;
+        top: -.5ch;
+        width: calc(var(--dq-work-size-first-letter) * .85);
+      }
+    }
+  }
+
+}</code>
+    <code>&lt;!--HTML--&gt;
+&lt;div class="[ dq-work cube &gt; block ] [ post ]"&gt;
+  &lt;div class="[ dq-work ] [ selected-category design ]"&gt;
+    &lt;h2&gt;Design H2&lt;/h2&gt;
+    &lt;p&gt;post content&lt;/p&gt;
+    &lt;p&gt;post content&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="[ dq-work ] [ selected-category development ]"&gt;
+    &lt;h3&gt;Development H3&lt;/h3&gt;
+    &lt;p&gt;post content&lt;/p&gt;
+    &lt;p&gt;post content&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="[ dq-work ] [ selected-category foss ]"&gt;
+    &lt;h4&gt;Foss H4&lt;/h4&gt;
+    &lt;p&gt;post content&lt;/p&gt;
+    &lt;p&gt;post content&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="[ dq-work ] [ selected-category stealth ]"&gt;
+    &lt;h5&gt;Stealth H5&lt;/h5&gt;
+    &lt;p&gt;post content&lt;/p&gt;
+    &lt;p&gt;post content&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="[ dq-work ] [ selected-category forum ]"&gt;
+    &lt;h6&gt;Forum H6&lt;/h6&gt;
+    &lt;p&gt;post content&lt;/p&gt;
+    &lt;p&gt;post content&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+    </code>
+    <code>* no custom props at this time </code>
+  </details>
+
+  </div><!-- end block wrapper -->
+  
+  <hr/>
+  <hr/>
+
+  <!-- Atomic Design -->
+  <h3><a href="https://atomicdesign.bradfrost.com/table-of-contents/" target="_blank" rel="noopener noreferrer">Atomic</a></h3>
+  <p>Atomic Design Patterns<br/><small>(From atoms to organisms)</small></p>
+
+  <a name="atomic-atom"></a>
+  <h4>Atoms</h4>
+  <!-- https://atomicdesign.bradfrost.com/chapter-2/#atoms -->
+  <!-- atomic atoms wrapper -->
+  <label for="visible-atomic-atoms"><span></span>Atoms</label>
+  <input type="checkbox" name="visible-atomic-atoms" id="visible-atomic-atoms" checked/>
+  <div data-is-visible="visible-atomic-atoms">
+    <a name="dq_work-text-elements"></a>
+    <h4><a href="#dq_work-text-elements"><code>&lt;text elements&gt;</code></a></h4>
+    <details class="header-wrapper">
+      <summary>Headers
+        <br /><small style="font-weight:400">header and text accent colors</small>
+      </summary>
+      <div><h1 class="[ dq-work header ]">default</h1> </div>
+      <div class="[ dq-work atom ][ selected-category design ]"><h1 class="[ dq-work atom ][ header ]">design</h1></div>
+      <div class="[ dq-work atom ][ selected-category development ]"><h1 class="[ dq-work atom ][ header ]">development</h1></div>
+      <div class="[ dq-work atom ][ selected-category foss ]"><h2 class="[ dq-work atom ][ header ]">foss</h2></div>
+      <div class="[ dq-work atom ][ selected-category stealth ]"><h3 class="[ dq-work atom ][ header ]">stealth</h3></div>
+      <div class="[ dq-work atom ][ selected-category blog ]"><h4 class="[ dq-work atom ][ header ]">blog</h4></div>
+      <div class="[ dq-work atom ][ selected-category forum ]"><h5 class="[ dq-work atom ][ header ]">forum</h5></div>
+      <div class="[ dq-work atom ][ selected-category miscellaneous ]"><h6 class="[ dq-work atom ][ header ]">miscellaneous</h6></div>
+
+      <ul class="[ smol :: grid ][ content dq-work-headers ]" style="list-style: none;">
+        <li><div class="[ dq-work atom ][ selected-category design ]"><mark>design</mark><br/><a href="#">link</a><br/><span class="[ dq-work atom ][ text accent ]">class</span></div></li>
+        <li><div class="[ dq-work atom ][ selected-category development ]"><mark>development</mark><br/><a href="#">link</a><br/><span class="[ dq-work atom ][ text accent ]">class</span></div></li>
+        <li><div class="[ dq-work atom ][ selected-category foss ]"><mark>foss</mark><br/><a href="#">link</a><br/><span class="[ dq-work atom ][ text accent ]">class</span></div></li>
+        <li><div class="[ dq-work atom ][ selected-category stealth ]"><mark>stealth</mark><br/><a href="#">link</a><br/><span class="[ dq-work atom ][ text accent ]">class</span></div></li>
+        <li><div class="[ dq-work atom ][ selected-category blog ]"><mark>blog</mark><br/><a href="#">link</a><br/><span class="[ dq-work atom ][ text accent ]">class</span></div></li>
+        <li><div class="[ dq-work atom ][ selected-category forum ]"><mark>forum</mark><br/><a href="#">link</a><br/><span class="[ dq-work atom ][ text accent ]">class</span></div></li>
+        <li><div class="[ dq-work atom ][ selected-category miscellaneous ]"><mark>miscellaneous</mark><br/><a href="#">link</a><br/><span class="[ dq-work atom ][ text accent ]">class</span></div></li>
+      </ul>
+    </details>
+    <details class="markdown-wrapper">
+      <summary>Markdown<br/><small style="font-weight:400">load file and inline</small></summary>
+      <div style="display:block;border:1px solid rgba(255,255,255,.2);padding:.5rem">
+        <dq_work-util-parse-markdown 
+          with-class="[ dq-work cube > block ] [ post ]"
+          > &gt; _with_ some **inline** `md` or from a dynamic load (as seen below)
+        </dq_work-util-parse-markdown>
+      </div>
+      <p>&nbsp;</p>
+      <hr><hr>
+      <div style="display:block;border:1px solid rgba(255,255,255,.2);padding:.5rem">
+        <dq_work-util-parse-markdown
+          md="_template"
+          with-class="[ dq-work cube > block ] [ post ]"
+        >Loading...</dq_work-util-parse-markdown>
+      </div>
+    </details>
+    <details class="footer-wrapper">
+      <summary>Footer Tag
+        <br /><small style="font-weight:400">footer tag element</small>
+      </summary>
+      <div style="border: 1px solid; overflow: auto;">
+        <footer style="width:55%"><h6>footer tag content</h6></footer>
+      </div>
+    </details>
+<!-- simple grid -->
+  <a name="hexagon-element"></a>
+  <h4><a href="#hexagon-element"><code>&lt;hexagon element&gt;</code></a></h4>
+  <p>The unifying thread of the <strong>DownQuark Work</strong> website is the <mark>Hexagons</mark>.
+    <br/>There are many reasons why, a <em>multitude</em> of unique instances and extensability, and all-in-all, a
+    <em><strong>great</strong></em> potential for the related code to become a <a href="#">Big Ball of Mud</a>.
+    <br/><br/>Below shows our solutions to ensure this issues remains hypothetical.
+    We've also written an <a href="#">in-depth article</a> if you want to know more.
+  </p>
+  <details class="hexagon-element-wrapper">
+    <style>
+      .content.interactions.show-mark-description-on-hover {
+        padding:0;
+        position:relative;
+        & li {
+          list-style:none;
+        }
+        & mark:not([slot]) {
+          transition-property: opacity;
+          transition-duration: .2s;
+          font-weight: 600;
+          opacity: 0;
+          top:-2rem;
+          left:2rem;
+          position: relative;
+          z-index: 3;
+          border: 1px solid black;
+          background-color: var(--downquark-color-brand-purple);
+          color: var(--downquark-color-base-gray-200);
+          &::after{ border-width: 2.8ch 1.5ch 0 0; border-color: var(--downquark-color-brand-purple) transparent transparent transparent;}
+          &::before{ border-width: 0 0 2.8ch 1.5ch; border-color: transparent transparent var(--downquark-color-brand-purple) transparent;}
+        }
+        .dq-work.element { &:hover ~ mark { opacity: 1; } }
+      }
+      .dq-work.hex.element.img {
+        --dq-work-url-img-bg-element-hex: url(https://as2.ftcdn.net/v2/jpg/05/53/37/39/1000_F_553373973_S2whM9g0osk2g1WYtiqdk8mFv5ZgBqqA.jpg)
+      }
+    </style>
+    <summary>HTML Elements
+      <br /><small style="font-weight:400">basic hexagon element without use of <code>clip-path</code></small>
+      <br /><small style="font-weight:400">extended from this <a href="http://brenna.github.io/csshexagon/" target="_blank" rel="noopener noreferrer">github repo</a></small>
+    </summary>
+    <ul class="[ smol :: grid ][ content dq-work-hex ][ interactions > show-mark-description-on-hover ]">
+        <li><div class="[ dq-work atom ][ hex element ]">
+          <!-- failsafes allow us to have all nested elements available -->
+          <div class="[ img top ]"></div>
+          <div class="[ img bottom ]"></div>
+          <span class="[ shadow ]"></span>
+        </div><mark>Base</mark></li>
+      <li><div class="[ dq-work atom ][ hex element ] [ enable > border ]"></div><mark>Border</mark></li>
+      <li><div class="[ dq-work atom ][ hex element ] [ enable > shadow ]">
+        <span class="[ shadow ]"></span>
+      </div><mark>Shadow</mark></li>
+      <li><div class="[ dq-work atom ][ hex element ] [ enable > shadow border ]">
+        <div class="[ img top ]"></div>
+        <div class="[ img bottom ]"></div>
+        <span class="[ shadow ]"></span>
+      </div><mark>Border🟄Shadow</mark></li></li>
+      <li><div class="[ dq-work atom ][ hex element ] [ enable > img ]">
+        <div class="[ img top ]"></div>
+        <div class="[ img bottom ]"></div>
+      </div><mark>Image</mark></li>
+      <li><div class="[ dq-work atom ][ hex element ] [ enable > img shadow ]">
+        <div class="[ img top ]"></div>
+        <div class="[ img bottom ]"></div>
+        <span class="[ shadow ]"></span>
+      </div><mark>Image🟄Shadow</mark></li>
+      <li><div class="[ dq-work atom ][ hex element ] [ enable > img border ]">
+        <div class="[ img top ]"></div>
+        <div class="[ img bottom ]"></div>
+        <span class="[ shadow ]"></span>
+      </div><mark>Image🟄Border</mark></li>
+      <li><div class="[ dq-work atom ][ hex element ] [ enable > img shadow border ]">
+        <div class="[ img top ]"></div>
+        <div class="[ img bottom ]"></div>
+        <span class="[ shadow ]"></span>
+      </div><mark>Border🟄Shadow</mark></li>
+    </details>
+  </ul>
+
+  <details class="hexagon-lit-wrapper">
+    <summary>Lit Components
+      <br /><small style="font-weight:400">Converted <code>HTML Element</code> ~ and so much more</small>
+    </summary>
+    <h5>basic</h5>
+    <small style="display:inline-block; margin:-.5rem 0 1rem;  text-wrap: balance;  padding-right:1rem; width:100%; text-align: right;">Like the <code>HTML</code> examples above, these consist of user specified values,<br/>and have no given internal purpose.</small>
+      <ul class="[ smol :: grid ][ content dq-work-hex ][ interactions > show-mark-description-on-hover ]">
+        <li><dq_work-atom-hexagon hex-shadow="0 0 20px 0 var(--downquark-color-brand-purple)"></dq_work-atom-hexagon><mark>Shadow</mark></li>
+        <li><dq_work-atom-hexagon hex-img="https://as2.ftcdn.net/v2/jpg/05/53/37/39/1000_F_553373973_S2whM9g0osk2g1WYtiqdk8mFv5ZgBqqA.jpg"></dq_work-atom-hexagon><mark>Image</mark></li>
+        <li><dq_work-atom-hexagon hex-border="4px solid var(--downquark-color-brand-red)" hex-img="https://as2.ftcdn.net/v2/jpg/05/53/37/39/1000_F_553373973_S2whM9g0osk2g1WYtiqdk8mFv5ZgBqqA.jpg"></dq_work-atom-hexagon><mark>Image🟄Border</mark></li>
+        <li><dq_work-atom-hexagon hex-shadow="0 0 1rem .125rem var(--downquark-color-brand-gold)" hex-color="var(--downquark-color-brand-purple)" hex-border=".25rem solid var(--downquark-color-base-gray-300)"></dq_work-atom-hexagon><mark>Border🟄Shadow</mark></li>
+      </ul>
+    <h5>preset : filters</h5>
+    <small style="margin-bottom:1rem; display:inline-block; text-wrap: balance;  padding-right:1rem; width:100%; text-align: right;">
+      This preset is used for elements<br/>limiting the amount of data displayed on the site.
+    </small>
+    <ul class="[ smol :: grid ][ content dq-work-hex ][ interactions > show-mark-description-on-hover ]">
+      <li style="margin-right:5rem"><dq_work-atom-hexagon as-a="development filter"></dq_work-atom-hexagon><mark>development filter</mark></li>
+      <li style="margin:0 4rem 0 3rem"><dq_work-atom-hexagon as-a="design filter"></dq_work-atom-hexagon><mark>design filter</mark></li>
+      <li style="margin:0 4rem"><dq_work-atom-hexagon as-a="foss filter"></dq_work-atom-hexagon><mark>foss filter</mark></li>
+      <li style="margin:0 3rem"><dq_work-atom-hexagon as-a="stealth filter"></dq_work-atom-hexagon><mark>stealth filter</mark></li>
+      <li style="margin:0 3rem"><dq_work-atom-hexagon as-a="blog filter"></dq_work-atom-hexagon><mark>blog filter</mark></li>
+      <li style="margin:0 3rem"><dq_work-atom-hexagon as-a="forum filter"></dq_work-atom-hexagon><mark>forum filter</mark></li>
+      <li style="margin:0 3rem"><dq_work-atom-hexagon as-a="miscellaneous filter"></dq_work-atom-hexagon><mark>miscellaneous filter</mark></li>
+      <li style="margin:0 3rem"><dq_work-atom-hexagon as-a="clear filter"></dq_work-atom-hexagon><mark>clear filter</mark></li>
+    </ul>
+    <h5>preset : tiles</h5>
+    <small style="margin-bottom:1rem; display:inline-block; text-wrap: balance;  padding-right:1rem; width:100%; text-align: right;">
+      This preset is used for elements<br/>which interact with the scrollable timeline.
+    </small>
+    <ul class="[ smol :: grid ][ content dq-work-hex ][ interactions > show-mark-description-on-hover ]">
+      <li style="margin-right:5rem"><dq_work-atom-hexagon as-a="development tile">
+        <span slot="tile-date">23.01.02</span>
+        <mark slot="tile-title">tile title</mark>
+      </dq_work-atom-hexagon><mark>development tile</mark></li>
+      <li style="margin:0 4rem 0 3rem"><dq_work-atom-hexagon as-a="design tile">
+        <span slot="tile-date">23.01.02</span>
+        <mark slot="tile-title">tile title</mark>
+      </dq_work-atom-hexagon><mark>design tile</mark></li>
+      <li style="margin:0 4rem"><dq_work-atom-hexagon as-a="foss tile"></dq_work-atom-hexagon><mark>foss tile</mark></li>
+      <li style="margin:0 3rem"><dq_work-atom-hexagon as-a="stealth tile"></dq_work-atom-hexagon><mark>stealth tile</mark></li>
+      <li style="margin:0 3rem"><dq_work-atom-hexagon as-a="blog tile"></dq_work-atom-hexagon><mark>blog tile</mark></li>
+      <li style="margin:0 3rem"><dq_work-atom-hexagon as-a="forum tile"></dq_work-atom-hexagon><mark>forum tile</mark></li>
+      <li style="margin:0 3rem"><dq_work-atom-hexagon as-a="miscellaneous tile">
+        <span slot="tile-date">23.01.02</span>
+        <mark slot="tile-title">tile titletile titletile titletile title</mark>
+      </dq_work-atom-hexagon><mark>miscellaneous tile</mark></li>
+    </ul>
+    <h5>preset : visual</h5>
+    <small style="margin-bottom:1rem; display:inline-block; text-wrap: balance;  padding-right:1rem; width:100%; text-align: right;">
+      This preset is used for elements<br/>more advanced than the `basic` tiles, but lacking complex logic.
+      <br/><small>these would be using the <code>clip-path</code></small>
+    </small>
+    <div>
+      <p><mark><strong>Background Animations</strong></mark></p>
+      <ul class="[ smol :: grid ][ content dq-work-hex ][ interactions > show-mark-description-on-hover ]">
+        <li><dq_work-atom-hexagon as-a="visual development background animation"></dq_work-atom-hexagon><mark>development</mark></li>
+        <li><dq_work-atom-hexagon as-a="visual design background animation"></dq_work-atom-hexagon><mark>design</mark></li>
+        <li><dq_work-atom-hexagon as-a="visual foss background animation"></dq_work-atom-hexagon><mark>foss</mark></li>
+        <li><dq_work-atom-hexagon as-a="visual stealth background animation"></dq_work-atom-hexagon><mark>stealth</mark></li>
+        <li><dq_work-atom-hexagon as-a="visual blog background animation"></dq_work-atom-hexagon><mark>blog</mark></li>
+        <li><dq_work-atom-hexagon as-a="visual forum background animation"></dq_work-atom-hexagon><mark>forum</mark></li>
+        <li><dq_work-atom-hexagon as-a="visual miscellaneous background animation"></dq_work-atom-hexagon><mark>miscellaneous</mark></li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><small>show details</small></summary>
+    <code>&lt;!--HTML--&gt;
+      &lt;!--BASE COMPONENT--&gt;
+      &lt;div class="[ dq-work hex element ]"&gt;&lt;/div&gt;
+
+      &lt;!-- ~~~ --&gt;
+
+      &lt;!--FULL COMPONENT--&gt;
+      &lt;div class="[ dq-work hex element ] [ enable &gt; img shadow border ]"&gt;
+        &lt;div class="[ img top ]"&gt;&lt;/div&gt;
+        &lt;div class="[ img bottom ]"&gt;&lt;/div&gt;
+        &lt;span class="[ shadow ]"&gt;&lt;/span&gt;
+      &lt;/div&gt;</code>
+<code>&lt;!--LIT--&gt;
+  &lt;dq_work-atom-hexagon as-a="foss filter"&gt;&lt;/dq_work-atom-hexagon&gt;
+  &lt;dq_work-atom-hexagon as-a="stealth tile"&gt;&lt;/dq_work-atom-hexagon&gt;
+  &lt;dq_work-atom-hexagon as-a="visual development background animation"&gt;&lt;/dq_work-atom-hexagon&gt;
+  
+</code>
+<code>* Allows custom props:
+~~~~~~~~ HTML ~~~~~~~~
+  BASE
+* --dq-work-size-width-element-hex               * --dq-work-color-fill-element-hex
+  * measurements will be based upon this      * solid fill color for hexagon
+
+  BORDER
+* --dq-work-color-border-element-hex        * --dq-work-style-border-element-hex
+  * desired color of the border               * solid, dashed, etc
+* --dq-work-width-border-element-hex
+  * border size
+
+  IMAGE
+* --dq-work-url-img-bg-element-hex
+  * required if using an image: `url(...)`
+
+  SHADOW
+* --dq-work-blur-shadow-element-hex         * --dq-work-color-shadow-element-hex
+  * amount of blur to apply                   * color of shadow including alpha channel: `rgba`,`lcha`,etc
+</code>
+  </details>
+</div><!-- end atomic atoms wrapper -->
+
+  <a name="atomic-molecule"></a>
+  <h4>Molecules</h4>
+  <!-- https://atomicdesign.bradfrost.com/chapter-2/#molecules -->
+  <label for="visible-atomic-molecules"><span></span>Molecules</label>
+  <input type="checkbox" name="visible-atomic-molecules" id="visible-atomic-molecules" checked/>
+  <div data-is-visible="visible-atomic-molecules">
+    <a name="dq_work-molecule-filter"></a>
+    <h4><a href="#dq_work-molecule-filter"><code>&lt;filter&gt;</code></a></h4>
+    <p>The main controls for filtering page content</p>
+    <details class="molecule-filter-wrapper" style="position: relative;">
+      <script>
+        const toggleloadinganim = () => {
+          let loader = document.querySelector('dq_work-molecule-filter')
+          loader = loader.shadowRoot.querySelector('.dq-work.filter.molecule')
+          loader.classList.toggle('loading')
+        }
+      </script>
+      <summary>Filter
+        <br /><small style="font-weight:400">doubles as a loader during creation</small>
+      </summary>
+      <br/><button type="button" onclick="toggleloadinganim()" style="position:absolute;top:2rem;right:2rem">toggle animation</button>
+      <dq_work-molecule-filter></dq_work-molecule-filter>
+    </details>
+
+    <details class="molecule-timeline-wrapper">
+      <summary>Timeline
+        <br/><small style="font-weight:400">Allows for selecting of articles &amp;/or posts</small>
+        <br/><small>&bull; <i>TODO:</i> &nbsp;for stacked stlyes <a href="https://smolcss.dev/#smol-avatar-list" target="blank" rel="noopener noreferrer">this</a> could be useful.</small>
+      </summary>
+      <div class="[ cube :: wrapper ]" style="border:1px solid var(--downquark-color-background-accent); padding: 0; position:relative; height:20rem; overflow: hidden;">
+        <dq_work-molecule-timeline content-path="/assets/_content/__externals/timeline.sample.json"></dq_work-molecule-timeline>
+      </div>
+    </details>
+  
+
+  <a name="atomic-organism"></a>
+  <h4 style="display:none">Organisms</h4>
+  <!-- https://atomicdesign.bradfrost.com/chapter-2/#organisms -->
+  <hr>
+  <hr/>
+<footer><small>
+  This will continue to evolve as new features are added to the website.
+  <br/>Look over our <a href="/html/builds/">qurrent builds</a> to see what those may entail.
+</small></footer>
+</body>
+
+</html>

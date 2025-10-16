@@ -1,0 +1,110 @@
+/* unlayered styles */
+body {
+  color: #333;
+}
+
+/* creates the first layer: `layout` */
+@layer layout {
+  main {
+    display: grid;
+  }
+}
+
+/* creates the second layer: an unnamed, anonymous layer */
+@layer {
+  body {
+    margin: 0;
+  }
+}
+
+/* creates the third and fourth layers: `theme` and `utilities` */
+@layer theme, layout, utilities;
+
+/* adds styles to the already existing `layout` layer */
+@layer layout {
+  main {
+    color: #000;
+  }
+}
+
+/* creates the fifth layer: an unnamed, anonymous layer */
+@layer {
+  body {
+    margin: 1vw;
+  }
+}
+
+/*  https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers
+In the above CSS, we created five layers:
+  - layout
+  - <anonymous(01)>
+  - theme
+  - utilities
+  - and <anonymous(02)>
+in that order
+  - with a sixth, implicit layer of unlayered styles contained in the body style block.
+The layer order is the order in which the layers are created,
+  with the implicit layer of unlayered styles always being last.
+There is no way to change the layer order once created.
+*/
+
+/* 
+/* @layer site, page; *//* << uncomment this to see effect
+
+@layer page {
+  h1 {
+    text-decoration: overline; 
+    color: red;
+  }
+}
+
+@layer site {
+  h1 {
+    text-decoration: underline; 
+    color: green;
+  }
+}
+*/
+
+/*
+If you define a layer using media or feature queries, and the media is not a match or the feature is not supported,
+change media query to `50px`
+*//*
+    @media (min-width: 500rem { 
+      @layer site;
+    }
+    
+    @layer page {
+      h1 {
+        text-decoration: overline; 
+        color: red;
+      }
+    }
+*/
+
+/*
+https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers#importing_style_sheets_into_named_and_anonymous_layers_with_import
+You can import a stylesheet into a named layer, a nested named layer, or an anonymous laye
+@import url("components-lib.css") layer(components);
+@import url("dialog.css") layer(components.dialog);
+@import url("marketing.css") layer();
+@import url(comments.css) layer(social);
+@import url(sm-icons.css) layer(social);
+> You can import styles and create layers based on specific conditions using media queries and feature queries.
+@import url("ruby-narrow.css") layer(international) supports(display: ruby) and
+  (width < 32rem);
+@import url("ruby-wide.css") layer(international) supports(display: ruby) and
+  (width >= 32rem);
+*/
+
+/* https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers#overview_of_nested_cascade_layers
+Created using @layer at-rule followed by the names of one or more layers, using a dot notation. Multiple dots and layer names signify multiple nesting.
+To add styles to a named nested layer, use the dot notation:
+```
+@layer example.layout {
+  main {
+    width: 50vw;
+  }
+}```
+*/
+

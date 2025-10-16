@@ -1,0 +1,234 @@
+@import url('../colors.css');
+@import url('../scales.css');
+@import url('../typography.css');
+@import url('../utils.css');
+
+:root {
+  --ramp-gradient: var(--downquark-color-text-primary);
+}
+/* overrides, additions, and extensions to obtain the desired look and feel for DownQuark's Design System layout */
+body {
+  inline-size: 80vi;
+  margin:0 5vi;
+  max-inline-size: unset;
+  padding:0 5vi;
+  box-sizing: content-box;
+  text-wrap: unset;
+}
+
+/* balance nested text */
+* * p {
+  text-wrap: balance;
+}
+
+details:focus-within {
+  box-shadow: none;
+}
+section>details:has(>summary) {
+  background: none;
+  border: none;
+  padding: 0;
+  position: relative;
+}
+section>details>summary {
+  background-color:var(--downquark-color-background-secondary);
+  color: var(--downquark-theme-color-text-headers);
+  font-family: var(--downquark-font-family-serif);
+  font-size: var(--downquark-size-font-ramp-1);
+  line-height: 2ch;
+  list-style-type:none;
+  margin: 0 1.38rem 1.38rem;
+  padding: 1ch 0;
+  position: relative;
+
+  &::after,&::before {
+    block-size: 4ch; /* 2ch line-heigh + 1ch padding-bottom + 1ch padding-top */
+    border-color: var(--downquark-color-background-secondary) transparent transparent transparent;
+    border-style: solid;
+    border-width: 4.15ch 2.5ch 0 0;
+    bottom: 0;
+    content: " ";
+    inline-size: 2.5ch;
+    right: -2.5ch;
+    position: absolute;
+  }
+  &::before {
+    block-size: 4ch;
+    border-color: transparent transparent var(--downquark-color-background-secondary) transparent;
+    border-width: 0 0 4ch 2.5ch;
+    left: -2.5ch;
+  }
+  &::marker {
+    color:var(--downquark-theme-color-text-headers);
+    font-size:smaller;
+    content:"▷ ";
+  }
+}
+section>[open]>summary::marker{
+  content: "▽ ";
+}
+section>details>summary:hover::marker { content:"▶︎ "; }
+section>details[open]>summary:hover::marker { content:"▼ "; }
+
+section>details>fieldset {
+  color: var(--downquark-color-text-accent);
+  display: inherit;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+
+  & legend {
+    display: inherit;
+
+    & input[type="radio"] { 
+      aspect-ratio: 1;
+      clip-path: var(--downquark-shape-hexagon-clip-path);
+      cursor: pointer;
+      position: relative;
+      width: calc(100% / var(--items-per-line));
+      &::after {
+        content: " ";
+        height:100%;
+        left:0;
+        position: absolute;
+        top:0;
+        width: 100%;
+      }
+      & + label {
+        color: var(--downquark-color-text-primary);
+        display: inline-block;
+        display: none;
+        width: calc(100% - 2rem);
+      }
+    }
+  }
+  & p { display: none; }
+}
+
+section>details+div,
+section>details+p {
+  margin:-1.75rem 1rem 1rem;
+}
+section>details[open]+div,
+section>details[open]+p {
+  display: none;
+}
+/* content boxed, below */
+section>details>fieldset:has(input[type="radio"]:checked),
+section>details>fieldset:has(input[type="radio"]:hover) {
+  display: inline;
+  height: unset;
+  width: unset;
+  overflow: unset;
+  & legend {
+    display: table;
+  }
+  & label {
+    background: var(--ramp-gradient);
+    padding-inline-end: 1rem;
+    text-align: right;
+  }
+  & p {
+    color: var(--downquark-color-text-primary);
+    display: block;
+  }
+}
+
+/* section>details:has(article input[type="radio"]:hover), */
+section>details[open]:has(article input[type="radio"]:checked) {
+  padding-bottom:9rem;
+}
+
+section>details>article {
+  color: orange;
+  display: inline-block;
+  overflow: hidden;
+  width: calc(100% / var(--items-per-line));
+
+  & aside {
+
+    & input[type="radio"] { 
+      aspect-ratio: 1;
+      clip-path: var(--downquark-shape-hexagon-clip-path);
+      cursor: pointer;
+      position: relative;
+      width: 100%;
+      &::after {
+        background: var(--ramp-gradient);
+        content: " ";
+        height:100%;
+        left:0;
+        position: absolute;
+        top:0;
+        width: 100%;
+      }
+      & + label {
+        color: var(--downquark-color-text-primary);
+        display: inline-block;
+        display: none;
+        width: calc(100% - 2rem);
+      }
+    }
+  }
+  & p { display: none; }
+}
+
+/* content unboxed, to the right */
+section>details>article:has(input[type="radio"]:checked),
+section>details>article:has(input[type="radio"]:hover) {
+  &::before {
+    content: attr(title);
+    font-size: smaller;
+    position: absolute;
+    right: 3rem;
+    top:.8rem;
+    z-index: 10;
+  }
+}
+section>details>article:has(input[type="radio"]:checked) {
+  & p {
+    border: 1px solid var(--downquark-color-text-accent);
+    bottom: 0;
+    color: var(--downquark-color-text-primary);
+    display: flex;
+    height: 8rem;
+    inline-size: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    text-align: right;
+
+    &::after {
+      content: attr(data-title);
+      position: absolute;
+      top: -2rem;
+      right: 0;
+    }
+
+    & span {
+      display: block;
+      font-size: smaller;
+      padding: 1rem;
+    }
+  }
+}
+
+section>details>article:has(input[type="radio"]:hover)::before {
+  margin-top: -0.75rem;
+  padding: 0.75rem 0 0.75rem 20%;
+  background-color: var(--downquark-color-background-secondary);
+  z-index: 12;
+}
+
+section>details>table>tbody {
+  & td:has(div) {
+    font-size: smaller;
+    text-align: center;
+  }
+  & div { 
+    background-color: var(--downquark-color-text-accent);
+    clip-path: var(--downquark-shape-hexagon-clip-path);
+    margin: 0 auto;
+  }
+}
