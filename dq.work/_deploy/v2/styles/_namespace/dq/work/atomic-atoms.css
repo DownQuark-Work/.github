@@ -1,0 +1,16 @@
+/* import atomic component css */
+@import url('/styles/atoms/dq/work/header.css');
+@import url('/styles/atoms/dq/work/hexagon.element.css');
+@import url('/styles/atoms/dq/work/hexagon.path.css');
+
+
+h1 {
+  font-family: var(--dq-work-font-family-header);
+  text-align: center;
+}
+:is(h2,h3,h4,h5,h6) {
+  text-align: end;
+}
+
+:focus, details:focus-within { box-shadow: none; }
+/* atomic components */

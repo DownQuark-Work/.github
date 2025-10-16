@@ -1,0 +1,23 @@
+:where(html),:root {
+  /* default to system fonts - from https://modernfontstacks.com/ */
+  --downquark-font-family-mono: 'Nimbus Mono PS', 'Courier New', monospace;
+  --downquark-font-family-sans: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+  --downquark-font-family-serif: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+  --downquark-font-family-slab: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
+
+  /* Fluid Typography.
+    Based off of:
+    @link https://utopia.fyi/type/calculator?c=320,16,1.2,1240,18,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+  */
+
+  /* Compounded headlines sizes */
+  --downquark-size-font-ramp--2: clamp(0.69rem, calc(0.69rem + 0.04vi), 0.72rem);
+  --downquark-size-font-ramp--1: clamp(0.83rem, calc(0.81rem + 0.12vi), 0.90rem);
+  --downquark-size-font-primary: clamp(var(--downquark-size-base), calc(0.96rem + 0.22vi), 1.13rem);
+  --downquark-size-font-ramp-1: clamp(1.20rem, calc(1.13rem + 0.36vi), 1.41rem);
+  --downquark-size-font-ramp-2: clamp(1.44rem, calc(1.33rem + 0.55vi), 1.76rem);
+  --downquark-size-font-ramp-3: clamp(1.73rem, calc(1.56rem + 0.82vi), 2.20rem);
+  --downquark-size-font-ramp-4: clamp(2.07rem, calc(1.84rem + 1.17vi), 2.75rem);
+  --downquark-size-font-ramp-5: clamp(2.49rem, calc(2.16rem + 1.64vi), 3.43rem);
+  --downquark-size-font-ramp-6: clamp(2.99rem, calc(2.53rem + 2.27vi), 4.29rem);
+}

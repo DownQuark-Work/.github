@@ -1,0 +1,116 @@
+/* CUBE CSS METHODOLOGY */
+/* Utility */
+.cube.wrapper {
+  max-inline-size: 75rem;
+  margin-inline-end: auto;
+  margin-inline-start: auto;
+  padding: var(--dq-wrapper-sizing, var(--downquark-scale-size-m));
+}
+
+.cube.flow > * + * {
+  margin-top: var(--dq-flow-sizing, var(--downquark-scale-size-s));
+}
+
+.cube.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-block: 0;
+}
+.cube.stack:only-child { block-size: 100%; } /* ↓ `height` in horizontal-tb writing mode */
+.cube.stack > * + * { margin-block-start: var(--dq-stack-sizing, var(--downquark-scale-size-m)); } /* not recursive by default */
+.cube.stack.recursive * + * { margin-block-start: var(--dq-stack-sizing, var(--downquark-scale-size-m)); }
+/** Variants
+* allows custom props:
+* • --dq-stack-sizing-large                                         * • --dq-stack-mutator-large
+* • --dq-stack-sizing-small                                         * • --dq-stack-mutator-small
+*  • --dq-stack-sizing (will be applied if exists and above DNE)    *  • --dq-stack-mutator (will be applied if exists and above DNE)
+*    • --downquark-scale-size-m (default if above DNE)              *    • 2 || .25 (default if above DNE)
+*/
+.cube.stack.large > * + * { margin-block-start: calc(var(--dq-stack-sizing-large, var(--dq-stack-sizing, var(--downquark-scale-size-m))) * var(--dq-stack-sizing-mutator-large, var(--dq-stack-sizing-mutator, 2))); }
+.cube.stack.small > * + * { margin-block-start: calc(var(--dq-stack-sizing-small, var(--dq-stack-sizing, var(--downquark-scale-size-m))) * var(--dq-stack-sizing-mutator-small, var(--dq-stack-sizing-mutator, .25))); }
+
+.cube.center {
+  box-sizing: content-box;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--dq-center-sizing, 60ch);
+}
+/** non-intrinsic
+* allows custom props:
+* • --dq-center-sizing-left
+* • --dq-center-sizing-right
+*  • --dq-center-sizing (will be applied if exists and above DNE)
+*    • --downquark-scale-size-s (default if above DNE)
+*/
+.cube.center:not(.intrinsic) {
+  padding-left: var(--dq-center-sizing-left, var(--dq-center-sizing, var(--downquark-scale-size-s)));
+  padding-right: var(--dq-center-sizing-right, var(--dq-center-sizing, var(--downquark-scale-size-s)));
+}
+.cube.center.intrinsic {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.cube.cluster {
+  align-items: var(--dq-cluster-align, flex-start);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dq-cluster-sizing, var(--downquark-scale-size-s));
+  justify-content: var(--dq-cluster-justify, flex-start);
+}
+
+.cube:has(>.sidebar+.not-sidebar) {
+  .not-sidebar {
+    /* ↓ Grow from nothing */
+    flex-basis: 0;
+    flex-grow: 999;
+    /* ↓ Wrap when the elements are of equal width */
+    min-width: 50%;
+  }
+  .sidebar {
+    /* ↓ The width when the sidebar _is_ a sidebar */
+    flex-basis: 20rem;
+    flex-grow: 1;
+  }
+}
+
+.cube.liner {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  &:after {
+    content: '';
+    flex-grow: 1;
+    height: var(--dq-liner-size, 1px);
+    background: var(--dq-liner-color, var(--downquark-color-text-interactive));
+    min-width: 1rem;
+    margin: auto;
+    margin-left: var(--dq-liner-spacing, 1rem);
+  }
+}
+
+/* 
+* Included references for completeness but not implemented due to scope being too narrow for this level of abstraction:
+* - cover
+*   - https://every-layout.dev/demos/cover-html-book/
+* - frame
+*   - https://every-layout.dev/demos/frames-in-cards/
+* - grid
+*   - https://every-layout.dev/demos/grid-cards/
+* - icon
+*   - https://every-layout.dev/demos/icon-casings/
+*   - https://every-layout.dev/demos/icon-sizes/
+* - imposter
+*   - https://every-layout.dev/demos/imposter-over-text/
+* - reel
+*   - https://every-layout.dev/demos/reel-cards/
+*   - https://every-layout.dev/demos/reel-images/
+*   - https://every-layout.dev/demos/reel-links/
+* - sidebar
+*   - https://every-layout.dev/demos/sidebar-media-object/
+*   - https://every-layout.dev/demos/sidebar-input-with-button/
+* - switcher
+*   - https://every-layout.dev/demos/switcher-basic/
+ */

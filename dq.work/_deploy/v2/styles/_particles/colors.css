@@ -1,0 +1,275 @@
+:where(html),:root { 
+/* DownQuark brand base colors */
+
+/* Heirarchy */
+--downquark-color-brand-primary: oklch(0.33 0.12 26.48);
+--downquark-color-brand-secondary: oklch(0.64 0.11 72);
+--downquark-color-brand-tertiary: oklch(0.46 0.12 339.55);
+
+/*
+// secondary shades
+red: lch(10% 145 60);
+Gold: lch(72.008%, 41.219%, 69.147%) #e9a043 rgb(233,160,67)
+#ba8a45; #f2ab46; lch(70% 125 80); lch(80.77% 75.4 76.84);
+Purple: /*lch(60% 40 315);
+*/
+
+/* Semantics */
+--downquark-color-brand-red: var(--downquark-color-brand-primary);
+--downquark-color-brand-gold: var(--downquark-color-brand-secondary);
+--downquark-color-brand-purple: var(--downquark-color-brand-tertiary);
+
+/*! reasonable colors v0.4.0 | MIT License | https://github.com/matthewhowell/reasonable-colors */
+/* ******
+Format for CSS variables: --downquark-color-base-COLORNAME-SHADE
+
+Available values for COLORNAME:
+	gray,
+	rose, raspberry, red, orange, cinnamon, amber, yellow, lime,
+	chartreuse, green, emerald, aquamarine, teal, cyan, powder, sky
+	cerulean, azure, blue, indigo, violet, purple, magenta, pink
+
+Available values for SHADE:
+	100, 200, 300, 400, 500, 600
+
+Minimum contrast can be inferred by the difference between two SHADE numbers
+
+- Difference of 2: (3:1)
+- Difference of 3: (4.5:1)
+- Difference of 4: (7:1)
+
+reasonable-colors.css uses hex values. HSL, LCH, and RGB color spaces are available.
+
+For .scss friendly variable declarations, FILENAME.scss for each color space are provided.
+
+More information available at: https://www.reasonable.work/colors 
+- https://reasonable.work/colors/raspberry/ <-- to find complementary / analgous / etc
+- https://unpkg.com/reasonable-colors@0.4.0/reasonable-colors.css << to get hex values
+- https://meodai.github.io/color-names/ <<- use hex values to get abstraction
+- https://github.com/meodai/color-namer <<<--batchable :D
+****** */
+
+	/* gray */
+	--downquark-color-base-gray-100: lch(97% 0 120);
+	--downquark-color-base-gray-200: lch(90% 0 120);
+	--downquark-color-base-gray-300: lch(58% 0 120);
+	--downquark-color-base-gray-400: lch(47% 0 120);
+	--downquark-color-base-gray-500: lch(26% 0 120);
+	--downquark-color-base-gray-600: lch(13% 0 120);
+
+	/* rose */
+	/* hue 1 */
+	--downquark-color-base-rose-100: lch(99% 162 2);
+	--downquark-color-base-rose-200: lch(92% 162 2);
+	--downquark-color-base-rose-300: lch(60% 162 2);
+	--downquark-color-base-rose-400: lch(49% 162 2);
+	--downquark-color-base-rose-500: lch(28% 162 2);
+	--downquark-color-base-rose-600: lch(16% 162 2);
+
+	/* raspberry */
+	/* hue 2 */
+	--downquark-color-base-raspberry-100: lch(99% 162 17);
+	--downquark-color-base-raspberry-200: lch(92% 162 17);
+	--downquark-color-base-raspberry-300: lch(60% 162 17);
+	--downquark-color-base-raspberry-400: lch(49% 162 17);
+	--downquark-color-base-raspberry-500: lch(28% 162 17);
+	--downquark-color-base-raspberry-600: lch(16% 162 17);
+
+	/* red */
+	/* hue 3 */
+	--downquark-color-base-red-100: lch(99% 162 32);
+	--downquark-color-base-red-200: lch(92% 162 32);
+	--downquark-color-base-red-300: lch(60% 162 32);
+	--downquark-color-base-red-400: lch(49% 162 32);
+	--downquark-color-base-red-500: lch(28% 162 32);
+	--downquark-color-base-red-600: lch(16% 162 32);
+
+	/* orange */
+	/* hue 4 */
+	--downquark-color-base-orange-100: lch(99% 162 47);
+	--downquark-color-base-orange-200: lch(92% 162 47);
+	--downquark-color-base-orange-300: lch(60% 162 47);
+	--downquark-color-base-orange-400: lch(48% 162 47);
+	--downquark-color-base-orange-500: lch(28% 162 47);
+	--downquark-color-base-orange-600: lch(15% 162 47);
+
+	/* cinnamon */
+	/* hue 5 */
+	--downquark-color-base-cinnamon-100: lch(98% 162 62);
+	--downquark-color-base-cinnamon-200: lch(91% 162 62);
+	--downquark-color-base-cinnamon-300: lch(59% 162 62);
+	--downquark-color-base-cinnamon-400: lch(48% 162 62);
+	--downquark-color-base-cinnamon-500: lch(27% 162 62);
+	--downquark-color-base-cinnamon-600: lch(15% 162 62);
+
+	/* amber */
+	/* hue 6 */
+	--downquark-color-base-amber-100: lch(98% 162 77);
+	--downquark-color-base-amber-200: lch(91% 162 77);
+	--downquark-color-base-amber-300: lch(59% 162 77);
+	--downquark-color-base-amber-400: lch(48% 162 77);
+	--downquark-color-base-amber-500: lch(27% 162 77);
+	--downquark-color-base-amber-600: lch(15% 162 77);
+
+	/* yellow */
+	/* hue 7 */
+	--downquark-color-base-yellow-100: lch(98% 162 92);
+	--downquark-color-base-yellow-200: lch(91% 162 92);
+	--downquark-color-base-yellow-300: lch(59% 162 92);
+	--downquark-color-base-yellow-400: lch(47% 162 92);
+	--downquark-color-base-yellow-500: lch(26% 162 92);
+	--downquark-color-base-yellow-600: lch(14% 162 92);
+
+	/* lime */
+	/* hue 8 */
+	--downquark-color-base-lime-100: lch(97% 162 107);
+	--downquark-color-base-lime-200: lch(90% 162 107);
+	--downquark-color-base-lime-300: lch(58% 162 107);
+	--downquark-color-base-lime-400: lch(47% 162 107);
+	--downquark-color-base-lime-500: lch(26% 162 107);
+	--downquark-color-base-lime-600: lch(14% 162 107);
+
+	/* chartreuse */
+	/* hue 9 */
+	--downquark-color-base-chartreuse-100: lch(97% 162 122);
+	--downquark-color-base-chartreuse-200: lch(90% 162 122);
+	--downquark-color-base-chartreuse-300: lch(58% 162 122);
+	--downquark-color-base-chartreuse-400: lch(47% 162 122);
+	--downquark-color-base-chartreuse-500: lch(26% 162 122);
+	--downquark-color-base-chartreuse-600: lch(14% 162 122);
+
+	/* green */
+	/* hue 10 */
+	--downquark-color-base-green-100: lch(97% 162 137);
+	--downquark-color-base-green-200: lch(90% 162 137);
+	--downquark-color-base-green-300: lch(58% 162 137);
+	--downquark-color-base-green-400: lch(47% 162 137);
+	--downquark-color-base-green-500: lch(26% 162 137);
+	--downquark-color-base-green-600: lch(13% 162 137);
+
+	/* emerald */
+	/* hue 11 */
+	--downquark-color-base-emerald-100: lch(97% 162 152);
+	--downquark-color-base-emerald-200: lch(90% 162 152);
+	--downquark-color-base-emerald-300: lch(58% 162 152);
+	--downquark-color-base-emerald-400: lch(47% 162 152);
+	--downquark-color-base-emerald-500: lch(26% 162 152);
+	--downquark-color-base-emerald-600: lch(13% 162 152);
+
+	/* aquamarine */
+	/* hue 12 */
+	--downquark-color-base-aquamarine-100: lch(97% 162 167);
+	--downquark-color-base-aquamarine-200: lch(90% 162 167);
+	--downquark-color-base-aquamarine-300: lch(58% 162 167);
+	--downquark-color-base-aquamarine-400: lch(47% 162 167);
+	--downquark-color-base-aquamarine-500: lch(25% 162 167);
+	--downquark-color-base-aquamarine-600: lch(13% 162 167);
+
+	/* teal */
+	/* hue 13 */
+	--downquark-color-base-teal-100: lch(96% 162 182);
+	--downquark-color-base-teal-200: lch(89% 162 182);
+	--downquark-color-base-teal-300: lch(57% 162 182);
+	--downquark-color-base-teal-400: lch(46% 162 182);
+	--downquark-color-base-teal-500: lch(25% 162 182);
+	--downquark-color-base-teal-600: lch(12% 162 182);
+
+	/* cyan */
+	/* hue 14 */
+	--downquark-color-base-cyan-100: lch(96% 162 197);
+	--downquark-color-base-cyan-200: lch(89% 162 197);
+	--downquark-color-base-cyan-300: lch(57% 162 197);
+	--downquark-color-base-cyan-400: lch(46% 162 197);
+	--downquark-color-base-cyan-500: lch(24% 162 197);
+	--downquark-color-base-cyan-600: lch(11% 162 197);
+
+	/* powder */
+	/* hue 15 */
+	--downquark-color-base-powder-100: lch(95% 162 212);
+	--downquark-color-base-powder-200: lch(88% 162 212);
+	--downquark-color-base-powder-300: lch(56% 162 212);
+	--downquark-color-base-powder-400: lch(45% 162 212);
+	--downquark-color-base-powder-500: lch(23% 162 212);
+	--downquark-color-base-powder-600: lch(9% 162 212);
+
+	/* sky */
+	/* hue 16 */
+	--downquark-color-base-sky-100: lch(95% 162 227);
+	--downquark-color-base-sky-200: lch(87% 162 227);
+	--downquark-color-base-sky-300: lch(55% 162 227);
+	--downquark-color-base-sky-400: lch(43% 162 227);
+	--downquark-color-base-sky-500: lch(21% 162 227);
+	--downquark-color-base-sky-600: lch(6% 162 227);
+
+	/* cerulean */
+	/* hue 17 */
+	--downquark-color-base-cerulean-100: lch(94% 162 242);
+	--downquark-color-base-cerulean-200: lch(87% 162 242);
+	--downquark-color-base-cerulean-300: lch(54% 162 242);
+	--downquark-color-base-cerulean-400: lch(42% 162 242);
+	--downquark-color-base-cerulean-500: lch(19% 162 242);
+	--downquark-color-base-cerulean-600: lch(3% 162 242);
+
+	/* azure */
+	/* hue 18 */
+	--downquark-color-base-azure-100: lch(94% 162 257);
+	--downquark-color-base-azure-200: lch(87% 162 257);
+	--downquark-color-base-azure-300: lch(54% 162 257);
+	--downquark-color-base-azure-400: lch(42% 162 257);
+	--downquark-color-base-azure-500: lch(18% 162 257);
+	--downquark-color-base-azure-600: lch(3% 162 257);
+
+	/* blue */
+	/* hue 19 */
+	--downquark-color-base-blue-100: lch(94% 162 272);
+	--downquark-color-base-blue-200: lch(87% 162 272);
+	--downquark-color-base-blue-300: lch(54% 162 272);
+	--downquark-color-base-blue-400: lch(42% 162 272);
+	--downquark-color-base-blue-500: lch(17% 162 272);
+	--downquark-color-base-blue-600: lch(3% 162 272);
+
+	/* indigo */
+	/* hue 20 */
+	--downquark-color-base-indigo-100: lch(94% 162 287);
+	--downquark-color-base-indigo-200: lch(87% 162 287);
+	--downquark-color-base-indigo-300: lch(54% 162 287);
+	--downquark-color-base-indigo-400: lch(42% 162 287);
+	--downquark-color-base-indigo-500: lch(18% 162 287);
+	--downquark-color-base-indigo-600: lch(3% 162 287);
+
+	/* violet */
+	/* hue 21 */
+	--downquark-color-base-violet-100: lch(95% 162 302);
+	--downquark-color-base-violet-200: lch(88% 162 302);
+	--downquark-color-base-violet-300: lch(55% 162 302);
+	--downquark-color-base-violet-400: lch(44% 162 302);
+	--downquark-color-base-violet-500: lch(21% 162 302);
+	--downquark-color-base-violet-600: lch(5% 162 302);
+
+	/* purple */
+	/* hue 22 */
+	--downquark-color-base-purple-100: lch(96% 162 317);
+	--downquark-color-base-purple-200: lch(89% 162 317);
+	--downquark-color-base-purple-300: lch(57% 162 317);
+	--downquark-color-base-purple-400: lch(45% 162 317);
+	--downquark-color-base-purple-500: lch(23% 162 317);
+	--downquark-color-base-purple-600: lch(9% 162 317);
+
+	/* magenta */
+	/* hue 23 */
+	--downquark-color-base-magenta-100: lch(97% 162 332);
+	--downquark-color-base-magenta-200: lch(90% 162 332);
+	--downquark-color-base-magenta-300: lch(58% 162 332);
+	--downquark-color-base-magenta-400: lch(47% 162 332);
+	--downquark-color-base-magenta-500: lch(26% 162 332);
+	--downquark-color-base-magenta-600: lch(13% 162 332);
+
+	/* pink */
+	/* hue 24 */
+	--downquark-color-base-pink-100: lch(98% 162 347);
+	--downquark-color-base-pink-200: lch(91% 162 347);
+	--downquark-color-base-pink-300: lch(59% 162 347);
+	--downquark-color-base-pink-400: lch(48% 162 347);
+	--downquark-color-base-pink-500: lch(27% 162 347);
+	--downquark-color-base-pink-600: lch(15% 162 347);
+}

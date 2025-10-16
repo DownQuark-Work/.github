@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>downquark namespace</title>
+  <link rel="stylesheet" href="/styles/_namespace/dq-work.css" />
+  <style>
+    /* 
+    * Page specific overrides - _should **NOT**_ be included in any heirarchical import 
+    */
+    mark { line-height: 2; }
+  </style>
+</head>
+<body>
+  <hgroup>
+    <h1>dq-work tokens</h1>
+    <h3>particle overrides</h3>
+  </hgroup>
+  <p>
+    The extended, abstracted, and/or overwritten <mark>Base Tokens</mark>
+    <br/><small>(only new or changed values will be displayed)</small>
+  </p>
+  <p>
+    We are extending the <a href="https://cloudscape.design/foundation/visual-foundation/design-tokens" target="_blank" rel="noopener noreferrer">CTI+ Naming Convention</a>. 
+    Including the <em>NameSpace</em> gives us the template of: <code>NameSpace &gt; Category &gt; Type &gt; Item &gt; Subitem &gt; State</code>
+  </p>
+  <section>
+    <details><summary>Color</summary>
+      <style>
+        article {
+          --items-per-line: 8
+        }
+      </style>
+      <p><mark><strong>Filters</strong></mark></p>
+      <article title="Design"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-filter-design),var(--dq-work-color-filter-design));" /></aside>
+        <p data-title="Design" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-filter-design);">
+          &nbsp;&nbsp;--dq-work-color-filter-design
+      </p></article>
+      <article title="Development"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-filter-development),var(--dq-work-color-filter-development));" /></aside>
+        <p data-title="Development" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-filter-development);">
+          &nbsp;&nbsp;--dq-work-color-filter-development
+      </p></article>
+      <article title="Blog"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-filter-blog),var(--dq-work-color-filter-blog));" /></aside>
+        <p data-title="Blog" style="color:var(--downquark-color-base-gray-500); background-color: var(--dq-work-color-filter-blog);">
+          &nbsp;&nbsp;--dq-work-color-filter-blog
+      </p></article>
+      <article title="Forum"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-filter-forum),var(--dq-work-color-filter-forum));" /></aside>
+        <p data-title="Forum" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-filter-forum);">
+          &nbsp;&nbsp;--dq-work-color-filter-forum
+      </p></article>
+      <article title="Stealth"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-filter-stealth),var(--dq-work-color-filter-stealth));" /></aside>
+        <p data-title="Stealth" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-filter-stealth);">
+          &nbsp;&nbsp;--dq-work-color-filter-stealth
+      </p></article>
+      <article title="Foss"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-filter-foss),var(--dq-work-color-filter-foss));" /></aside>
+        <p data-title="Foss" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-filter-foss);">
+          &nbsp;&nbsp;--dq-work-color-filter-foss
+      </p></article>
+      <article title="Miscellaneous"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-filter-miscellaneous),var(--dq-work-color-filter-miscellaneous));" /></aside>
+        <p data-title="Miscellaneous" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-filter-miscellaneous);">
+          &nbsp;&nbsp;--dq-work-color-filter-miscellaneous
+      </p></article>
+
+      <p><mark><strong>Tiles</strong></mark></p>
+      <article title="Design"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-tile-design),var(--dq-work-color-tile-design));" /></aside>
+        <p data-title="Design" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-tile-design);">
+          &nbsp;&nbsp;--dq-work-color-tile-design
+      </p></article>
+      <article title="Development"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-tile-development),var(--dq-work-color-tile-development));" /></aside>
+        <p data-title="Development" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-tile-development);">
+          &nbsp;&nbsp;--dq-work-color-tile-development
+      </p></article>
+      <article title="Blog"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-tile-blog),var(--dq-work-color-tile-blog));" /></aside>
+        <p data-title="Blog" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-tile-blog);">
+          &nbsp;&nbsp;--dq-work-color-tile-blog
+      </p></article>
+      <article title="Forum"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-tile-forum),var(--dq-work-color-tile-forum));" /></aside>
+        <p data-title="Forum" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-tile-forum);">
+          &nbsp;&nbsp;--dq-work-color-tile-forum
+      </p></article>
+      <article title="Stealth"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-tile-stealth),var(--dq-work-color-tile-stealth));" /></aside>
+        <p data-title="Stealth" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-tile-stealth);">
+          &nbsp;&nbsp;--dq-work-color-tile-stealth
+      </p></article>
+      <article title="Foss"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-tile-foss),var(--dq-work-color-tile-foss));" /></aside>
+        <p data-title="Foss" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-tile-foss);">
+          &nbsp;&nbsp;--dq-work-color-tile-foss
+      </p></article>
+      <article title="Miscellaneous"><aside><input type="radio" name="color-hexagon" style="--ramp-gradient: linear-gradient(var(--dq-work-color-tile-miscellaneous),var(--dq-work-color-tile-miscellaneous));" /></aside>
+        <p data-title="Miscellaneous" style="color:var(--downquark-color-base-gray-100); background-color: var(--dq-work-color-tile-miscellaneous);">
+          &nbsp;&nbsp;--dq-work-color-tile-miscellaneous
+      </p></article>
+    </details>
+    <hr/>
+  </section>
+
+  <section style="display:none">
+    <details><summary>Scales</summary>
+      <table>
+        <thead><tr>
+        <th>token</th>
+        <th>@min</th>
+        <th>@max</th>
+        <th>@current</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><code>--downquark-scale-size-3xs</code></td>
+            <td><div style="width:.25rem;height:.25rem;"></div>.25rem</td>
+            <td><div style="width:.31rem;height:.31rem;"></div>.31rem</td>
+            <td><div style="width:var(--downquark-scale-size-3xs);height:var(--downquark-scale-size-3xs);"></div>&nbsp;</td>
+          </tr>
+        </tbody>
+        <tfoot></tfoot>
+      </table>
+    </details>
+  </section>
+
+  <section>
+    <details><summary>Typography</summary>
+      <table>
+        <thead><tr>
+          <th>@token</th>
+          <th>preview</th>
+        </tr></thead>
+        <tbody>
+          <tr><td colspan="2" align="center"><code>--dq-work-font-family-header</code></td></tr>
+          <tr><td><code>--downquark-size-font-ramp--2</code></td><td style="font-size:var(--downquark-size-font-ramp--2);font-family:var(--dq-work-font-family-header)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp--1</code></td><td style="font-size:var(--downquark-size-font-ramp--1);font-family:var(--dq-work-font-family-header)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-primary</code></td><td style="font-size:var(--downquark-size-font-ramp-primary);font-family:var(--dq-work-font-family-header)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-1</code></td><td style="font-size:var(--downquark-size-font-ramp-1);font-family:var(--dq-work-font-family-header)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-2</code></td><td style="font-size:var(--downquark-size-font-ramp-2);font-family:var(--dq-work-font-family-header)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-3</code></td><td style="font-size:var(--downquark-size-font-ramp-3);font-family:var(--dq-work-font-family-header)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-4</code></td><td style="font-size:var(--downquark-size-font-ramp-4);font-family:var(--dq-work-font-family-header)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-5</code></td><td style="font-size:var(--downquark-size-font-ramp-5);font-family:var(--dq-work-font-family-header)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-6</code></td><td style="font-size:var(--downquark-size-font-ramp-6);font-family:var(--dq-work-font-family-header)">DownQuark</td></tr>
+          <tr><td colspan="2" align="center"><code>--dq-work-font-family-subheader<br/>--downquark-font-family-sans | --downquark-font-family-headers</code></td></tr>
+          <tr><td><code>--downquark-size-font-ramp--2</code></td><td style="font-size:var(--downquark-size-font-ramp--2);font-family:var(--dq-work-font-family-subheader)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp--1</code></td><td style="font-size:var(--downquark-size-font-ramp--1);font-family:var(--dq-work-font-family-subheader)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-primary</code></td><td style="font-size:var(--downquark-size-font-ramp-primary);font-family:var(--dq-work-font-family-subheader)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-1</code></td><td style="font-size:var(--downquark-size-font-ramp-1);font-family:var(--dq-work-font-family-subheader)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-2</code></td><td style="font-size:var(--downquark-size-font-ramp-2);font-family:var(--dq-work-font-family-subheader)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-3</code></td><td style="font-size:var(--downquark-size-font-ramp-3);font-family:var(--dq-work-font-family-subheader)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-4</code></td><td style="font-size:var(--downquark-size-font-ramp-4);font-family:var(--dq-work-font-family-subheader)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-5</code></td><td style="font-size:var(--downquark-size-font-ramp-5);font-family:var(--dq-work-font-family-subheader)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-6</code></td><td style="font-size:var(--downquark-size-font-ramp-6);font-family:var(--dq-work-font-family-subheader)">DownQuark</td></tr>
+          <tr><td colspan="2" align="center"><code>--dq-work-font-family-content | --dq-work-font-family-serif<br/>--downquark-font-family-primary</code></td></tr>
+          <tr><td><code>--downquark-size-font-ramp--2</code></td><td style="font-size:var(--downquark-size-font-ramp--2);font-family:var(--dq-work-font-family-content)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp--1</code></td><td style="font-size:var(--downquark-size-font-ramp--1);font-family:var(--dq-work-font-family-content)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-primary</code></td><td style="font-size:var(--downquark-size-font-ramp-primary);font-family:var(--dq-work-font-family-content)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-1</code></td><td style="font-size:var(--downquark-size-font-ramp-1);font-family:var(--dq-work-font-family-content)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-2</code></td><td style="font-size:var(--downquark-size-font-ramp-2);font-family:var(--dq-work-font-family-content)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-3</code></td><td style="font-size:var(--downquark-size-font-ramp-3);font-family:var(--dq-work-font-family-content)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-4</code></td><td style="font-size:var(--downquark-size-font-ramp-4);font-family:var(--dq-work-font-family-content)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-5</code></td><td style="font-size:var(--downquark-size-font-ramp-5);font-family:var(--dq-work-font-family-content)">DownQuark</td></tr>
+          <tr><td><code>--downquark-size-font-ramp-6</code></td><td style="font-size:var(--downquark-size-font-ramp-6);font-family:var(--dq-work-font-family-content)">DownQuark</td></tr>
+        </tbody>
+        <tfoot></tfoot>
+      </table>
+    </details>
+    <div>
+      <details><summary>fonts used by <em>downquark.work</em>:</summary>
+        <ul><li style="font-family:var(--dq-work-font-family-header)">Aoboshi One</li>
+        <li style="font-family:var(--dq-work-font-family-subheader)">Belanosima</li>
+        <li style="font-family:var(--dq-work-font-family-content)">Bitter</li></ul>
+      </details>
+      </div>
+  </section>
+</body>
+</html>

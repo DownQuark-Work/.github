@@ -1,0 +1,67 @@
+dq_work-molecule-timeline{ transition:top 1s ease-out 2s; top:198vh; }
+
+body.project.dq-work {
+  min-height: 100vh;
+  position: relative;
+
+  & dq_work-molecule-filter {
+    bottom: 0;
+    margin-bottom: calc(18.75rem / -2);
+    margin-right: calc(18.75rem / -2);
+    position: fixed;
+    right: 0;
+    rotate: 45deg;
+    z-index: 10;
+  }
+
+  & dq_work-molecule-timeline {
+    --hit-area-hover-timeline:155px;
+    /* border: 1px solid; /* FOR DEBUG */
+    left: 3vi;
+    position: fixed;
+    block-size: 100vh;
+    overflow: auto;
+    inline-size: var(--hit-area-hover-timeline);
+    z-index: 10;
+    &:hover {
+      --size-top-timeline:0
+      inline-size: var(--hit-area-hover-timeline);
+      + main {
+        transition: opacity .2s ease;
+        opacity: .3;
+      }
+    }
+    /* hide scrollbars */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar { display: none; } /* Chrome, Safari and Opera */
+  }
+
+  & footer {
+    bottom: 0;
+    left: 0;
+    line-height: initial;
+    position: absolute;
+    text-align: center;
+    inline-size: 100%;
+    & h6 {
+      display:inline;
+      float: none;
+      text-align: center;
+      &:after {
+        border-color: transparent transparent var(--downquark-color-background-secondary) transparent;
+        border-width: 0 1.5ch 2.1ch 0;
+      }
+  }
+}
+
+  & main {
+    position: relative;
+    z-index: 8;
+
+    &.cube.wrapper {
+      max-inline-size: 65vi;
+      &.main-content { padding-top: 0; }
+    }
+  }
+}

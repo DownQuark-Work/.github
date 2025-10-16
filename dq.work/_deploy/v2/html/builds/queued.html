@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DownQuark Queued Projects</title>
+  <link rel="stylesheet" href="/styles/_particles/_base/downquark-classless.css" />
+</head>
+<body>
+  <ul>
+    <li><h6>[ongoing] a scalable design system</h6>
+      <ul>
+        <li>Tokens and components can be split by namespace<ul>
+            <li>Instead of a shared namespace for shared components and tokens come up with a way for the ns to work
+              no matter what is passed in.<ul>
+                <li>E.g.: there will be NO <code>--shared-color-red\</code> token</li>
+                <li>Instead: <code>--dq-color-red</code> &amp;&amp; <code>--platform-color-red</code> will just work<ul>
+                    <li>Also note, this is not something that we will have to make new tokens with the same value for.
+                      When they&rsquo;re initially defined maybe it&rsquo;s just something along the lines of
+                      <code>--*-color-red</code><ul>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><h6>Tui Gui</h6><ul>
+        <li>Literally, a GUI to make customized TUIs</li>
+      </ul>
+    </li>
+    <li><h6>Write Freely Blog Extensions</h6><ul>
+        <li>Make it a blog with:<ul>
+            <li>categories</li>
+            <li>tags</li>
+            <li>and the ability for people to reply</li>
+            <li>Also create a custom FrontMatter section that can be used for the displayed excerpt as well as
+              author|date meta data</li>
+          </ul>
+        </li>
+        <li>Save this info in ArangoDB to create relational graphs</li>
+        <li>Starting out small here will help us immensely with our first big build<ul>
+            <li><strong>The plaform</strong></li>
+          </ul>
+        </li>
+        <li>We should also come up with a way for this to all be placed in one file and have the main website auto
+          import and display
+          To Blog</li>
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>

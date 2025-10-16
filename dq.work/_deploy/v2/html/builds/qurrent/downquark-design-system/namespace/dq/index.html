@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dq namespace</title>
+  <link rel="stylesheet" href="/styles/_namespace/dq.css" />
+  <style>
+    /* 
+    * Overrides for the styleguide page to render correctly.
+    * These are specific to this page alone and
+    * _should **NOT**_ be included in any heirarchical import 
+    */
+    [data-can-resize] {
+      position: relative; resize: horizontal; overflow: auto;
+      &::after { bottom:-.5rem; color:var(--downquark-color-base-amber-200); content: "↔︎"; font-size:x-large; padding:0 .1rem; position:absolute; right:.2rem; }
+    }
+    h4:has(code) {
+      &::after {
+        border-width: 2.5ch 1.5ch 0 0;
+      }
+      &::before {
+        border-width: 0 0 2.5ch 1.5ch;
+      }
+    }
+    details blockquote code { background-color: var(--downquark-color-background-primary); }
+    details:has(code:nth-child(2)):not(:has(blockquote)) code {
+      background-color: var(--downquark-color-background-primary);
+      display: inline-block;
+      inline-size: calc(50% - .25rem);
+      max-block-size: 12rem;
+      overflow: auto;
+      white-space: pre;
+    }
+    details:has(code:nth-child(4)):not(:has(blockquote)) code:last-child { inline-size: 100%; }
+    details[open]:has(summary small) details:not([open]) { margin-bottom: 0 }
+    input[name^="visible"] { visibility: hidden; pointer-events: none;}
+    input[name^="visible"]:checked { margin-bottom:.75rem; }
+    input[name^="visible"] + div[data-is-visible^="visible"] {
+      border-left: 1px dashed var(--downquark-color-text-accent);
+      border-top: 1px dashed var(--downquark-color-text-accent);
+      padding:1rem 0 0 1rem;
+    }
+    input[name^="visible"]:checked + div[data-is-visible^="visible"] { display: none; }
+    label[for^="visible"] {
+      background-color: var(--downquark-color-background-primary);
+      border-radius: .25rem;
+      border: 1px solid var(--downquark-color-text-accent);
+      color: var(--downquark-color-text-accent);
+      display: inline-block;
+      font-weight: bold;
+      margin: 0 5% 0;
+      padding:.5rem;
+      text-align: center;
+      width: 90%;
+      &:hover {
+        background-color: var(--downquark-color-text-accent);
+        color: var(--downquark-color-background-primary);
+      }
+    }
+    label[for^="visible"] span::before { content: "Hide "; }
+    label[for^="visible"]:has(+ input[name^="visible"]:checked) span::before { content: "Show "; }
+    nav table a {
+      & span { float:right; margin-right:1rem; }
+      &:hover span { color: var(--downquark-color-text-primary)}
+    }
+  </style>
+</head>
+
+<body>
+  <h1>namespace: dq</h1>
+  <blockquote>The following contains common classes that will likely be used reused in a majority of the DownQuark
+    builds.
+    <blockquote>
+      Included classes were originally defined in the <a href="https://cube.fyi/" target="_blank" rel="noopener noreferrer">Cube CSS Methodology</a>, and as
+        <a href="https://smolcss.dev/" target="_blank" rel="noopener noreferrer">SmolCSS</a> snippets. Most classes have been mutated from their original state to better fit DownQuark&rsquo;s requirements.
+    </blockquote>
+  </blockquote>
+  <p>
+    At this level of the heirarchical/namespaced styling we will be introducing our first classes!
+    <br />Our focus remains on keeping our coe as efficient as possible, nad at this level we are adhering to the <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance" target="_blank" rel="noopener noreferrer"><em>Composition Over Inheritance</em></a> process.
+  </p>
+  
+  <nav style="display:none">
+    <!-- not enough content yet to warrant this -->
+    <table>
+      <th><td colspan="3"><small>use below to jump directly to the content</small></td></th>
+      <tr>
+        <td>
+          <table>
+            <tr><th>CUBE</th></tr>
+            <tr><td><a href="#cube-composition">Composition<span>(0)</span></a></td></tr>
+            <tr><td><a href="#cube-utility">Utility <span>(5)</span></a></td></tr>
+            <tr><td><a href="#cube-block">Block<span>(n/a)</span></a></td></tr>
+            <tr><td><a href="#cube-exception">Exception<span>(n/a)</span></a></td></tr>
+          </table>
+        </td>
+        <th>SMOL</th>
+      </tr>
+    </table>
+  </nav>
+  <h3><a href="https://andy-bell.co.uk/cube-css/" target="_blank" rel="noopener noreferrer">Cube CSS</a></h3>
+  <p>
+    To continue building on our namespaced organization, we will take inspiration from the Cube CSS recommendation of <a
+      href="https://cube.fyi/" target="_blank" rel="noopener noreferrer">grouping classes</a> when they
+    are specified on <mark>HTML Elements.</mark>
+  </p>
+  <a name="cube-composition"></a>
+  <h4>Composition Styles</h4>
+  <!-- https://web.dev/design-system/css-compositions/ -->
+  <details>
+    <summary>about</summary>
+    From the <a href="https://cube.fyi/" target="_blank" rel="noopener noreferrer">docs</a>:
+    <blockquote>
+      Even if you break your design system into tiny molecules, it&rsquo;s still going to be applied in a larger context
+      at some point and that should never be forgotten, but so often is. I’ve found over many approaches, within many
+      projects over the years, that wider composition often trumps micro-optimisations and the composition layer of CUBE
+      CSS exists because of this.
+      <br />...<br />
+      Think of the composition as a skeleton.
+    </blockquote>
+    Luckily, a lot of these are inherited from the classless styling previously completed.
+  </details>
+  <p><mark>TLDR:</mark> most composition styles are handled by the classless rulesets</p>
+
+  <a name="cube-utility"></a>
+  <h4>Utility Styles</h4>
+  <!-- https://web.dev/design-system/css-utilities/ -->
+  <!-- https://every-layout.dev/layouts/ -->
+  <details>
+    <summary>about</summary>
+    From the <a href="https://cube.fyi/" target="_blank" rel="noopener noreferrer">docs</a>:
+    <blockquote>
+      <strong>What should Utilities do?</strong>
+      <ol>
+        <li>Apply a single CSS property, or a concise group of related properties to create re-usable helpers</li>
+        <li>Extend design tokens to maintain a single source of truth</li>
+        <li>Abstract repeatability away from the CSS and apply it in the HTML instead</li>
+      </ol>
+    </blockquote>
+  </details>
+  <p><mark>TLDR:</mark> a utility does one job and does it well.</p>
+  <hr/>
+  <label for="visible-cube-utility"><span></span> Cube Utility Styling</label>
+  <input type="checkbox" name="visible-cube-utility" id="visible-cube-utility" checked />
+  <div data-is-visible="visible-cube-utility">
+  <!-- wrapper -->
+  <a name="wrapper"></a>
+  <h4><a href="#wrapper"><code>&lt;wrapper&gt;</code></a></h4>
+  <details>
+    <summary>display</summary>
+    <section style="background-color: var(--downquark-color-base-gray-400);" class="[ cube :: wrapper ]">
+      <div style="background-color: var(--downquark-color-base-raspberry-600);">A wrapped element with default padding
+      </div>
+    </section>
+    &nbsp;
+    <hr />
+    <style>
+      details section:last-child.cube.wrapper {
+        --dq-wrapper-sizing: .25rem
+      }
+    </style>
+    <section style="background-color: var(--downquark-color-base-gray-400);" class="[ cube :: wrapper ]">
+      <div style="background-color: var(--downquark-color-base-raspberry-600);">A wrapped element with custom padding
+      </div>
+    </section>
+  </details>
+  <details>
+    <summary><small>show code</small></summary>
+    <code>/* CSS */
+.wrapper {
+  max-inline-size: 75rem;
+  margin-inline-end: auto;
+  margin-inline-start: auto;
+  padding: var(--dq-wrapper-sizing, var(--downquark-scale-size-m));
+}   </code>
+    <code>&lt;!--HTML--&gt;
+      &lt;section style="background-color: var(--downquark-color-base-gray-400);" class="[ cube :: wrapper ]"&gt;
+      &lt;div style="background-color: var(--downquark-color-base-raspberry-600);"&gt;A wrapped element with default padding&lt;/div&gt;
+    &lt;/section&gt;
+    &lt;hr/&gt;
+    &lt;style&gt;
+      details section:last-child.cube.wrapper { --dq-wrapper-sizing: .25rem }
+    &lt;/style&gt;
+    &lt;section style="background-color: var(--downquark-color-base-gray-400);" class="[ cube :: wrapper ]"&gt;
+      &lt;div style="background-color: var(--downquark-color-base-raspberry-600);"&gt;A wrapped element with custom padding&lt;/div&gt;
+    &lt;/section&gt;
+    </code>
+    <code>* Allows custom props:
+      * --dq-wrapper-sizing
+        * adjusts padding
+    </code>
+  </details>
+
+  <!-- flow -->
+  <a name="flow"></a>
+  <h4><a href="#flow"><code>&lt;flow&gt;</code></a></h4>
+  <details>
+    <summary>Rendered<br /><small style="font-weight:400">adds space <em>between</em> first and last components</small>
+    </summary>
+    <style>
+      .flow.content {
+        border: 1px dashed
+      }
+    </style>
+    <article>
+      <div class="[ cube :: flow ] [ content ]">
+        <section style="background-color: var(--downquark-color-base-gray-300);">dq</section>
+        <section style="background-color: var(--downquark-color-base-gray-300);">flowing</section>
+        <section style="background-color: var(--downquark-color-base-gray-300);">content</section>
+      </div>
+    </article>
+    &nbsp;
+    <hr />
+    <style>
+      .flow.content.custom.layout {
+        --dq-flow-sizing: 1px
+      }
+    </style>
+    <article>
+      <div class="[ cube :: flow ] [ content ] [ custom ( layout ) sizing ]">
+        <section style="background-color: var(--downquark-color-base-gray-300);">dq</section>
+        <section style="background-color: var(--downquark-color-base-gray-300);">flowing</section>
+        <section style="background-color: var(--downquark-color-base-gray-300);">content</section>
+      </div>
+    </article>
+  </details>
+  <details>
+    <summary><small>show code</small></summary>
+    <code>/* CSS */
+.cube.flow > * + * {
+  margin-top: var(--dq-flow-sizing, var(--downquark-scale-size-s));
+}</code>
+    <code>&lt;!--HTML--&gt;
+    &lt;style&gt;.flow.content { border: 1px dashed }&lt;/style&gt;
+  &lt;article&gt;
+    &lt;div class="[ cube :: flow ] [ content ]"&gt;
+      &lt;section style="background-color: var(--downquark-color-base-gray-300);"&gt;dq&lt;/section&gt;
+      &lt;section style="background-color: var(--downquark-color-base-gray-300);"&gt;flowing&lt;/section&gt;
+      &lt;section style="background-color: var(--downquark-color-base-gray-300);"&gt;content&lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+  &nbsp;
+  &lt;hr/&gt;
+  &lt;style&gt;.flow.content.custom.layout { --dq-flow-sizing: 1px }&lt;/style&gt;
+  &lt;article&gt;
+    &lt;div class="[ cube :: flow ] [ content ] [ custom layout ]"&gt;
+      &lt;section style="background-color: var(--downquark-color-base-gray-300);"&gt;dq&lt;/section&gt;
+      &lt;section style="background-color: var(--downquark-color-base-gray-300);"&gt;flowing&lt;/section&gt;
+      &lt;section style="background-color: var(--downquark-color-base-gray-300);"&gt;content&lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;</code>
+  <code>* Allows custom props:
+    * --dq-flow-sizing
+      * adjusts top margin
+  </code>
+  </details>
+
+  <!-- stack -->
+  <a name="stack"></a>
+  <h4><a href="#stack"><code>&lt;stack&gt;</code></a></h4>
+  <details>
+    <summary>Rendered<br /><small style="font-weight:400">extends functionality of <mark>flow</mark> utility class</small></summary>
+    <style>
+      .cube.stack * {
+        background-color: rgba(10, 10, 10, .3);
+      }
+    </style>
+    <!-- no recursion -->
+    <details style="border:0">
+      <summary style="font-weight:400;margin-bottom:0;">with no recursion</summary>
+      <section style="border:1px dashed" class="[ cube :: stack ]">
+        <div>top-level child</div>
+        <div>
+          <section>
+            <div>- nested children do not have spacing applied</div>
+            <div>- nested child</div>
+            <div>
+              <section style="background-color: brown;" class="[ cube :: stack ]">
+                <div>-- unless class is reapplied</div>
+                <div>-- 2nd level nested child has class and spacing applied</div>
+                <div>-- nested etc</div>
+              </section>
+            </div>
+            <div>- nested etc</div>
+          </section>
+        </div>
+        <div>etc</div>
+      </section>
+    </details>
+    <!-- recursion -->
+    <details style="border:0">
+      <summary style="font-weight:400;margin-bottom:0;">with recursion</summary>
+      <section style="border:1px dashed" class="[ cube :: stack > recursive ]">
+        <div>all children have spacing appllied</div>
+        <div>
+          <section>
+            <div>- even nested children without the stack class</div>
+            <div>- nested child</div>
+            <div>
+              <section style="background-color: brown;">
+                <div>-- 2nd level nested child does not have class applied</div>
+                <div>-- BUT does have spacing due to recursion</div>
+                <div>-- nested etc</div>
+              </section>
+            </div>
+            <div>- nested etc</div>
+          </section>
+          <div>etc</div>
+      </section>
+    </details>
+
+    <!-- variants -->
+    <details style="border:0">
+      <summary style="font-weight:400;margin-bottom:0;">with variants</summary>
+      <section style="border:1px dashed" class="[ cube :: stack > large ]">
+        <div class="[ cube :: stack > small ]">
+          <span>each top-level group has large spacing between them</span>
+          <label for="a">this is a label</label>
+          <input style="background-color: gray;" type="text" placeholder="this is an input field" />
+          <span>while each nested group has small spacing between them</span>
+        </div>
+        <div class="[ cube :: stack > small ]">
+          <span>each top-level group has large spacing between them</span>
+          <label for="b">this is a label</label>
+          <input style="background-color: gray;" type="text" placeholder="this is an input field" />
+          <span>while each nested group has small spacing between them</span>
+        </div>
+        <div class="[ cube :: stack > small ]">
+          <span>each top-level group has large spacing between them</span>
+          <label for="c">this is a label</label>
+          <button type="button">this is a button</button>
+          <span>while each nested group has small spacing between them</span>
+        </div>
+      </section>
+    </details>
+  </details>
+  <details>
+    <summary><small>show code</small></summary>
+    <code>/* CSS */
+      .cube.stack {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-block: 0;
+      }
+      .cube.stack:only-child { block-size: 100%; } /* ↓ `height` in horizontal-tb writing mode */
+      .cube.stack > * + * { margin-block-start: var(--dq-stack-sizing, var(--downquark-scale-size-m)); } /* not recursive by default */
+      .cube.stack.recursive * + * { margin-block-start: var(--dq-stack-sizing, var(--downquark-scale-size-m)); }
+      /** variants **/
+      .cube.stack.large > * + * { margin-block-start: calc(var(--dq-stack-sizing-large, var(--dq-stack-sizing, var(--downquark-scale-size-m))) * var(--dq-stack-sizing-mutator-large, var(--dq-stack-sizing-mutator, 2))); }
+      .cube.stack.small > * + * { margin-block-start: calc(var(--dq-stack-sizing-small, var(--dq-stack-sizing, var(--downquark-scale-size-m))) * var(--dq-stack-sizing-mutator-small, var(--dq-stack-sizing-mutator, .25))); }</code>
+    <code>&lt;!--HTML--&gt;
+      &lt;div class="[ cube :: stack ]"&gt;
+        &lt;div&gt;
+            &lt;div&gt;&lt;!-- child --&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;!-- child --&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;!-- etc --&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;div class="[ cube :: stack &gt; large ]"&gt;
+              &lt;div class="[ cube :: stack &gt; small ]"&gt;
+                &lt;div&gt;&lt;!-- child --&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;!-- child --&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;!-- etc --&gt;&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="[ cube :: stack &gt; small ]"&gt;
+                &lt;div&gt;&lt;!-- child --&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;!-- child --&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;!-- etc --&gt;&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="[ cube :: stack &gt; small ]"&gt;
+                &lt;div&gt;&lt;!-- child --&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;!-- child --&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;!-- etc --&gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div&gt;&lt;!-- etc --&gt;&lt;/div&gt;
+        &lt;div class="[ cube :: stack &gt; recursive ]"&gt;
+          &lt;div&gt;&lt;!-- child --&gt;&lt;/div&gt;
+          &lt;div&gt;
+            &lt;div&gt;&lt;!-- child --&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;!-- child --&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;!-- etc --&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;&lt;!-- etc --&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;</code>
+      <code>* Allows custom props:
+        • --dq-stack-sizing-large                                         • --dq-stack-mutator-large
+        • --dq-stack-sizing-small                                         • --dq-stack-mutator-small
+          • --dq-stack-sizing (will be applied if exists and above DNE)     • --dq-stack-mutator (will be applied if exists and above DNE)
+            • --downquark-scale-size-m (default if above DNE)                 • 2 || .25 (default if above DNE)</code>
+  </details>
+
+  <!-- center -->
+<a name="center"></a>
+<h4><a href="#center"><code>&lt;center&gt;</code></a></h4>
+<details>
+  <summary>Rendered<br /><small style="font-weight:400">centered content block</small></summary>
+  <!-- no intrinsic layout -->
+  <details style="border:0">
+    <summary style="font-weight:400;margin-bottom:0;">non-intrinsic</summary>
+    <section style="border:1px dashed" class="[ cube :: center :: flow ]">
+      <p>content block is 60 characters wide, but content itself is left aligned. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet esse vel et dicta officiis dolorem laudantium deserunt animi explicabo corporis corrupti modi debitis facilis fugiat tenetur ipsa ducimus, vero recusandae.</p>
+      <button type="button">even if the element is fewer than 60 chars</button>
+      <p>content block is 60 characters wide, but content itself is left aligned. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet esse vel et dicta officiis dolorem laudantium deserunt animi explicabo corporis corrupti modi debitis facilis fugiat tenetur ipsa ducimus, vero recusandae.</p>
+    </section>
+  </details>
+  <!-- intrinsic layout -->
+  <details style="border:0">
+    <summary style="font-weight:400;margin-bottom:0;">intrinsic</summary>
+    <section style="border:1px dashed" class="[ cube :: center > intrinsic :: flow ]">
+      <p>content block is 60 characters wide, but content itself is left aligned. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet esse vel et dicta officiis dolorem laudantium deserunt animi explicabo corporis corrupti modi debitis facilis fugiat tenetur ipsa ducimus, vero recusandae.</p>
+      <button type="button">makes small elements look better</button>
+      <p>but small content look worse</p>
+    </section>
+  </details>
+</details>
+<details>
+  <summary><small>show code</small></summary>
+  <code>/* CSS */
+    .cube.center {
+      box-sizing: content-box;
+      max-width: var(--dq-center-sizing, 60ch);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cube.center:not(.intrinsic) {
+      padding-left: var(--dq-center-sizing-padding-left, var(--dq-center-sizing-padding, var(--dq-center-sizing)));
+      padding-right: var(--s1);
+    }
+    .cube.center.intrinsic {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }</code>
+  <code>&lt;!--HTML--&gt;
+    &lt;section style="border:1px dashed" class="[ cube :: center ]"&gt;
+  &lt;p&gt;content block is 60 characters wide, but content itself is left aligned. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet esse vel et dicta officiis dolorem laudantium deserunt animi explicabo corporis corrupti modi debitis facilis fugiat tenetur ipsa ducimus, vero recusandae.&lt;/p&gt;
+  &lt;button type="button"&gt;even if the element is fewer than 60 chars&lt;/button&gt;
+  &lt;p&gt;content block is 60 characters wide, but content itself is left aligned. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet esse vel et dicta officiis dolorem laudantium deserunt animi explicabo corporis corrupti modi debitis facilis fugiat tenetur ipsa ducimus, vero recusandae.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section style="border:1px dashed" class="[ cube :: center &gt; intrinsic ]"&gt;
+  &lt;p&gt;content block is 60 characters wide, but content itself is left aligned. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet esse vel et dicta officiis dolorem laudantium deserunt animi explicabo corporis corrupti modi debitis facilis fugiat tenetur ipsa ducimus, vero recusandae.&lt;/p&gt;
+  &lt;button type="button"&gt;makes small elements look better&lt;/button&gt;
+  &lt;p&gt;but small content look worse&lt;/p&gt;
+&lt;/section&gt;</code>
+<code>/** non-intrinsic
+  * allows custom props:
+  * • --dq-center-sizing-left
+  * • --dq-center-sizing-right
+  *  • --dq-center-sizing (will be applied if exists and above DNE)
+  *    • --downquark-scale-size-s (default if above DNE)
+  */</code>
+</details>
+
+<!-- cluster -->
+<a name="cluster"></a>
+<h4><a href="#cluster"><code>&lt;cluster&gt;</code></a></h4>
+<details>
+  <summary>Rendered<br /><small style="font-weight:400">specify how content reacts on line break</small></summary>
+  <style>
+    .cube.cluster.custom {
+      &.outer {
+        --dq-cluster-justify: space-around;
+        --dq-cluster-align: center;
+      }
+      &.inner {
+          --dq-cluster-justify: flex-start;
+          --dq-cluster-align: flex-start;
+      }
+    }
+  </style>
+  <small>
+    <blockquote>to see the effect use the handle in the bottom right to resize the content</blockquote>
+  </small>
+  <div data-can-resize>
+  <section style="border:1px dashed; width:100%" class="[ cube :: cluster ] [ custom ( outer ) align justify ]">
+    <div style="background-color:purple;width:250px;height:100px"></div>
+    <section role="list" style="border:1px dashed" class="[ cube :: cluster ] [ custom ( inner ) align justify ]">
+      <div role="listitem"><a href="#">About</a></div>
+      <div role="listitem"><a href="#">Blog</a></div>
+      <div role="listitem"><a href="#">Shop</a></div>
+      <div role="listitem"><a href="#">Contact</a></div>
+      <div role="listitem"><a href="#">Accessibility</a></div>
+    </section>
+  </section>
+</div>
+</details>
+<details>
+  <summary><small>show code</small></summary>
+  <code>/* CSS */
+    .cube.cluster {
+      align-items: var(--dq-cluster-align, flex-start);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--dq-cluster-sizing, var(--downquark-scale-size-s));
+      justify-content: var(--dq-cluster-justify, flex-start);
+    }</code>
+  <code>&lt;!--HTML--&gt;
+    &lt;section class="[ cube :: cluster ]"&gt;
+  &lt;div&gt;&lt;!--content--&gt;&lt;/div&gt;
+  &lt;section role="list" class="[ cube :: cluster ]"&gt;
+    &lt;div role="listitem"&gt;&lt;!--listitem--&gt;&lt;/div&gt;
+    &lt;div role="listitem"&gt;&lt;!--listitem--&gt;&lt;/div&gt;
+    &lt;div role="listitem"&gt;&lt;!--listitem--&gt;&lt;/div&gt;
+  &lt;/section&gt;
+&lt;/section&gt;</code>
+<code>/** allows custom props:
+  * • --dq-cluster-align
+  * • --dq-cluster-justify
+  * • --dq-cluster-sizing
+  */</code>
+</details>
+
+<!-- liner -->
+<a name="liner"></a>
+<h4><a href="#liner"><code>&lt;liner&gt;</code></a></h4>
+<details>
+  <summary>Rendered<br /><small style="font-weight:400">fill remaining space with single pixel rule</small></summary>
+  <section style="border:1px dashed; width:100%">
+    <p class="[ cube :: liner ]">paragaph element</p>
+    <button class="[ cube :: liner ]" style="--dq-liner-size:.35rem;--dq-liner-color:white;--dq-liner-spacing:.25rem">button</button>
+  </section>
+</details>
+<details>
+  <summary><small>show code</small></summary>
+  <code>/* CSS */
+    .cube.liner {
+      display: flex;
+      align-items: flex-start;
+      text-align: left;
+      &:after {
+        content: '';
+        flex-grow: 1;
+        height: var(--dq-liner-size, 1px);
+        background: var(--dq-liner-color, var(--downquark-color-brand-secondary));
+        min-width: 1rem;
+        margin: auto;
+        margin-left: var(--dq-liner-spacing, 1rem);
+      }
+    }</code>
+  <code>&lt;!--HTML--&gt;
+    &lt;section style="border:1px dashed; width:100%"&gt;
+    &lt;p class="[ cube :: liner ]"&gt;paragaph element&lt;/p&gt;
+    &lt;button class="[ cube :: liner ]" style="--dq-liner-size:.35rem;--dq-liner-color:white;--dq-liner-spacing:.25rem"&gt;button&lt;/button&gt;
+  &lt;/section&gt;</code>
+<code>/** allows custom props:
+  * • --dq-liner-size
+  * • --dq-liner-color
+  * • --dq-liner-spacing
+  */</code>
+</details>
+
+  </div><!-- end utility wrapper -->
+
+  <a name="cube-block"></a>
+  <h4>Block Styles</h4>
+  <!-- https://cube.fyi/block.html -->
+  <details>
+    <summary>about</summary>
+    From the <a href="https://cube.fyi/block.html" target="_blank" rel="noopener noreferrer">docs</a>:
+    <blockquote>
+      <strong>What should a Block do?</strong>
+      <ol>
+        <li>Extend the work already done by the global CSS, composition and utility layers</li>
+        <li>Apply a collection of design tokens within a concise group</li>
+        </li>Create a namespace or specificity boost to control a specific context</li>
+      </ol>
+      <strong>What shouldn&rsquo;t a Block do?</strong>
+      <ol>
+        <li>Grow to anything larger than a handful of CSS rules (max 80-100 lines)</li>
+        <li>Solve more than one contextual problem. For example: styling a card and a button in one file</li>
+      </ol>
+    </blockquote>
+    Think of the composition as a skeleton.
+  </details>
+  <p><mark>TLDR:</mark> A <strong>block</strong> is a <strong>skeletal component or organisational structure</strong>.
+    <br/>Making it too linear for the <code>dq</code> namespace, but including the description for completeness.</strong></p>
+
+  <a name="cube-exception"></a>
+  <h4>Exception Styles</h4>
+  <!-- https://cube.fyi/exception.html -->
+  <details>
+    <summary>about</summary>
+    From the <a href="https://cube.fyi/exception.html" target="_blank" rel="noopener noreferrer">docs</a>:
+    <blockquote>
+      Exceptions are often caused by outside influences (such as JavaScript),
+      and using <em>only</em> <code>data attribute</code> selectors
+      (that both CSS and JavaScript can use efficiently) makes sense.
+      <br/>For example: you might have a &ldquo;reversed&rdquo; state or an &ldquo;inactive&rdquo; state.
+      We use data attributes because an exception should only occur in exceptional circumstances (the clue is in the name).
+      <br />...<br />
+      <strong>What should an exception do?</strong>
+      <ol>
+        <li>Provide a concise variation to a block</li>
+        <li>Use data attributes</li>
+      </ol>
+      <strong>What shouldn&rsquo;t an exception do?</strong>
+      <ol>
+        <li>Variate a block to the point where it isn&rsquo;t recognisable anymore.
+          <ul><li>This is where a new block should be created</li></ul>
+        </li>
+        <li>Use CSS classes</li>
+      </ol>
+    </blockquote>
+    Usually, an exception is related to a state change
+  </details>
+  <p><mark>TLDR:</mark>  An exception is a deviation from the rules outlined in a block.
+    <br/>Making it too linear for the <code>dq</code> namespace, but including the description for completeness.</strong></p>
+
+    <hr/>
+
+    <!-- SMOL CSS -->
+    <h3><a href="https://smolcss.dev/" target="_blank" rel="noopener noreferrer">SmolCSS</a></h3>
+    <p>Minimal snippets for modern CSS layouts and components</p>
+    <label for="visible-smol-utility"><span></span> Smol Utility Styling</label>
+    <input type="checkbox" name="visible-smol-utility" id="visible-smol-utility" checked/>
+    <div data-is-visible="visible-smol-utility">
+    <!-- simple grid -->
+    <a name="-grid"></a>
+    <h4><a href="#simple-grid"><code>&lt;simple grid&gt;</code></a></h4>
+    <details>
+      <style>
+        .smol.grid li {
+          background-color: var(--downquark-color-base-gray-300);
+          border: 1px dashed;
+          border-radius: 0.15em;
+          color: purple;
+          display: grid;
+          font-size: clamp(1.5rem,4vw,2rem);
+          font-weight: 700;
+          padding: 1rem;
+          text-align: center;
+        }
+      </style>
+      <summary>Rendered<br /><small style="font-weight:400">simple grid</small></summary>
+      <small>
+        <blockquote>to see the effect use the handle in the bottom right to resize the content</blockquote>
+      </small>
+      <div data-can-resize>
+        <ul class="[ smol :: grid ]">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
+      </div>
+    </details>
+    <details>
+      <summary><small>show code</small></summary>
+      <code>/* CSS */
+        .smol.grid:not(.flexbox) {
+          display: grid;
+          grid-gap: var(--dq-grid-gap-sizing,var(--downquark-scale-size-s));
+          /* min() with 100% prevents overflow in extra narrow spaces */
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--dq-grid-col-width-sizing,15ch)), 1fr));
+        }</code>
+      <code>&lt;!--HTML--&gt;
+        &lt;ul class="[ smol :: grid ]"&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;</code>
+<code>* Allows custom props:
+  * --dq-grid-gap-sizing    * --dq-grid-col-width-sizing
+    * adjusts gap amount      * adjusts width before &ldquo;breakpoint&rdquo;
+</code>
+    </details>
+
+<!-- flexbox grid -->
+<a name="flexbox-grid"></a>
+<h4><a href="#flexbox-grid"><code>&lt;flexbox grid&gt;</code></a></h4>
+<details>
+  <summary>Rendered<br /><small style="font-weight:400">simple (flexbox) grid</small></summary>
+  <small>
+    <blockquote>to see the effect use the handle in the bottom right to resize the content</blockquote>
+  </small>
+
+  <div data-can-resize>
+    <ul class="[ smol :: grid > flexbox ]">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+  </div>
+</details>
+<details>
+  <summary><small>show code</small></summary>
+  <code>/* CSS */
+  .smol.grid.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dq-grid-gap-sizing,var(--downquark-scale-size-s));
+  
+  > * {
+    flex: 1 1 var(--dq-grid-col-width-sizing,10ch);
+  }
+}</code>
+  <code>&lt;!--HTML--&gt;
+    &lt;ul class="[ smol :: grid &gt; flexbox ]"&gt;
+      &lt;li&gt;Item 1&lt;/li&gt;
+      &lt;li&gt;Item 2&lt;/li&gt;
+      &lt;li&gt;Item 3&lt;/li&gt;
+    &lt;/ul&gt;
+  </code>
+  <code>* Allows custom props:
+    * --dq-grid-gap-sizing    * --dq-grid-col-width-sizing
+      * adjusts gap amount      * adjusts width before &ldquo;breakpoint&rdquo;
+  </code>
+</details>
+
+<!-- centered -->
+<style>
+  .smol.centered span {
+    background-color: var(--downquark-color-base-gray-300);
+    border: 1px dashed;
+    border-radius: 0.15em;
+    color: purple;
+    display: grid;
+    font-size: clamp(1.5rem,4vw,2rem);
+    font-weight: 700;
+    padding: 1rem;
+    text-align: center;
+    place-content: center;
+  }
+</style>
+<a name="centered"></a>
+<h4><a href="#centered"><code>&lt;centered&gt;</code></a></h4>
+<details>
+  <summary>Rendered<br /><small style="font-weight:400">centered element</small></summary>
+  <div data-can-resize>
+    <section class="[ smol :: centered ]">
+      <span>Stuck in the middle</span>
+    </section>
+</div>
+</details>
+<details>
+  <summary><small>show code</small></summary>
+  <code>/* CSS */
+    .smol.centered {
+      display: grid;
+      place-content: center;
+    }</code>
+  <code>&lt;!--HTML--&gt;
+    &lt;section class="[ smol :: centered ]"&gt;
+      &lt;span&gt;Stuck in the middle&lt;/span&gt;
+    &lt;/section&gt;
+  </code>
+  <code>* no custom props</code>
+</details>
+
+
+<!-- article anchor -->
+<a name="article-anchor"></a>
+<h4><a href="#article-anchor"><code>&lt;article anchor&gt;</code></a></h4>
+<details>
+  <summary>Rendered<br /><small style="font-weight:400">anchor nav for jumping to content</small></summary>
+  <div class="[ smol :: anchor > article ]">
+    <article id="smol-article-anchor-title">A Wonderful Article Headline</article>
+    <a href="#smol-article-anchor-title">
+      <span aria-hidden="true">#</span>
+      <span class="[ smol :: anchor > article ] [ hidden ]">Section titled A Wonderful Article Headline</span>
+    </a>
+  </div>
+</details>
+<details>
+  <summary><small>show code</small></summary>
+  <code>/* CSS */
+    .smol.article.anchor {
+      display: grid;
+      grid-template-columns: min-content auto;
+      position: relative;
+      margin-top: 2em;
+      /* You could pull this property out and
+      generalize it under the selector `[id]` as
+      it won't affect flow layout or regular margins */
+      scroll-margin-top: 2em;
+    }
+    
+    .smol.article.anchor:target::before {
+      content: "Is it me you're looking for?";
+      position: absolute;
+      font-size: .9rem;
+      top: -1.25rem;
+      left: 0;
+      font-style: italic;
+      color: currentColor;
+    }
+    
+    .smol.article.anchor a {
+      grid-row-start: 1;
+      align-self: start;
+      font-size: 1rem;
+      line-height: 1;
+      /* We're using `transform` vs. margins */
+      transform: translateX(-50%) translateY(25%);
+      text-decoration: none;
+      /* Be sure to check that your own colors still meet
+      or exceed 4.5:1 contrast when using lowering opacity */
+      opacity: 0.75;
+    }
+    
+    .smol.article.anchor a:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
+      opacity: 1;
+    }
+    
+    .smol.article.anchor a:focus {
+      outline: 2px solid currentColor;
+      outline-offset: 0.15em;
+    }
+    
+    /* Visually hidden while remaining accessible to
+    assistive tech like screen readers */
+    .smol.article.anchor-hidden {
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      position: absolute;
+    }
+  </code>
+  <code>&lt;!--HTML--&gt;
+    &lt;div class="[ smol :: anchor &gt; article ]"&gt;
+    &lt;article id="smol-article-anchor-title"&gt;A Wonderful Article Headline&lt;/article&gt;
+    &lt;a href="#smol-article-anchor-title"&gt;
+    &lt;span aria-hidden="true"&gt;#&lt;/span&gt;
+    &lt;span class="[ smol :: anchor &gt; article ] [ hidden ]"&gt;Section titled A Wonderful Article Headline&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;/div&gt;
+  </code>
+  <code>* Allows custom props:
+    * --dq-anchor-target-content
+      * text to display when anchor is targeted
+  </code>
+</details>
+
+<!-- visited-link -->
+<a name="visited-link"></a>
+<h4><a href="#visited-link"><code>&lt;visited link&gt;</code></a></h4>
+<details>
+  <summary>Rendered<br /><small style="font-weight:400">visited link display</small></summary>
+  <ul class="[ smol :: visited ]">
+    <li><a href="https://ModernCSS.dev">ModernCSS.dev<span aria-hidden="true"></span></a></li>
+    <li><a href="https://LearnFromSteph.dev">LearnFromSteph.dev<span aria-hidden="true"></span></a></li>
+    <li><a href="https://5t3ph.dev/a11y-forms">Course: Accessibly Styling Form Fields<span aria-hidden="true"></span></a></li>
+  </ul>
+</details>
+<details>
+  <summary><small>show code</small></summary>
+  <code>/* CSS */
+    .smol.visited a {
+      & span {
+        margin-right: 0.25em;
+        float: left;
+        &::after {
+          color:var(--dq-visited-link-background-color, var(--downquark-color-background-accent));
+          content: "✔";
+        }
+      }
+      &:visited span::after {
+        color: var(--dq-visited-link-color, var(--downquark-coloxr-text-accent));
+      }
+    }</code>
+  <code>&lt;!--HTML--&gt;
+    &lt;ul class="[ smol :: visited ]"&gt;
+      &lt;li&gt;&lt;a href="https://ModernCSS.dev"&gt;ModernCSS.dev&lt;span aria-hidden="true"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="https://LearnFromSteph.dev"&gt;LearnFromSteph.dev&lt;span aria-hidden="true"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="https://5t3ph.dev/a11y-forms"&gt;Course: Accessibly Styling Form Fields&lt;span aria-hidden="true"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;</code>
+  <code>* Allows custom props:
+      * --dq-visited-link-background-color      * --dq-visited-link-color               * --dq-visited-link-content
+        * used to "hide" unvisited content        * * used to "show" visited content      * text to display when link is visited
+    </code>
+</details>
+
+</div><!-- end smol wrapper -->
+</body>
+
+</html>
