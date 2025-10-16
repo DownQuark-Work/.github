@@ -50,7 +50,6 @@ not_in_nav: | # exported, not included in menu
   _wip
 
 markdown_extensions:
-  - markdown_kroki:
 
 plugins:
   - kroki:
