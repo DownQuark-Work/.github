@@ -1,0 +1,6 @@
+This file as well as all files within the `.excluded` directory are ignored by default.
+
+This can be overridden in the `mkdocs.yml` file.
+- These follow the same rules as `.gitignore`.
+
+> documentedd [here](https://www.mkdocs.org/user-guide/configuration/#exclude_docs)
