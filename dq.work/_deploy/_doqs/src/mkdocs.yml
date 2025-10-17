@@ -50,6 +50,7 @@ not_in_nav: | # exported, not included in menu
   _wip
 
 markdown_extensions:
+  - markdown_checklist.extension:
   - toc:
       permalink: true
       permalink_class: headerlink
