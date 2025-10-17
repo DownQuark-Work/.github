@@ -60,6 +60,11 @@ plugins:
   - kroki:
       ServerURL: !ENV [KROKI_SERVER_URL, "https://kroki.io"]
       FencePrefix: "kroki-" # used to identify kroki diagrams in triple backtick code blocks
+  - search:
+  - termynal:
+      prompt_literal_start:
+        - "$"
+        - ">"
 
 theme:
   name: mkdocs

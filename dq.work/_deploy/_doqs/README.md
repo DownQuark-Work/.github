@@ -20,3 +20,7 @@ uu mkdocs build --clean
 > - [https://github.com/Paul-Riviere/mkdocs-curriculum-vitae](https://github.com/Paul-Riviere/mkdocs-curriculum-vitae)
 > - [https://github.com/kpn/mkdocs-kpn-theme](https://github.com/kpn/mkdocs-kpn-theme)
 > - [https://github.com/TEParsons/torillic](https://github.com/TEParsons/torillic)
+
+### Extras
+> - [https://liang2kl.github.io/mkdocs-blogging-plugin/](https://liang2kl.github.io/mkdocs-blogging-plugin/)
+> - [https://github.com/termynal/termynal.py](https://github.com/termynal/termynal.py) YES!!

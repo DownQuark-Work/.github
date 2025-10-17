@@ -11,6 +11,16 @@
 
 ---
 
+<!-- termynal -->
+
+```
+$ show progress
+---> 100%
+Done!
+```
+
+---
+
 Have to really re3ally check | Check
 :-:|-:
 does|this
