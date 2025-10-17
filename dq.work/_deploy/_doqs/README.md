@@ -16,6 +16,7 @@ uu mkdocs build --clean
 ## Theme inspiration
 > give these a try:
 > - [mkdocs-theme-topdf](https://github.com/kuri65536/mkdocs-theme-topdf)
+> - [https://github.com/FernandoCelmer/mkdocs-simple-blog](https://github.com/FernandoCelmer/mkdocs-simple-blog)
 > - [https://github.com/Paul-Riviere/mkdocs-curriculum-vitae](https://github.com/Paul-Riviere/mkdocs-curriculum-vitae)
 > - [https://github.com/kpn/mkdocs-kpn-theme](https://github.com/kpn/mkdocs-kpn-theme)
 > - [https://github.com/TEParsons/torillic](https://github.com/TEParsons/torillic)
