@@ -23,4 +23,11 @@ uu mkdocs build --clean
 
 ### Extras
 > - [https://liang2kl.github.io/mkdocs-blogging-plugin/](https://liang2kl.github.io/mkdocs-blogging-plugin/)
-> - [https://github.com/termynal/termynal.py](https://github.com/termynal/termynal.py) YES!!
+> - [https://github.com/pa-decarvalho/mkdocs-asciinema-player](https://github.com/pa-decarvalho/mkdocs-asciinema-player)
+> - [https://github.com/ubaumann/mkdocs-mcp](https://github.com/ubaumann/mkdocs-mcp)
+> - [https://github.com/pawamoy/mkdocs-llmstxt](https://github.com/pawamoy/mkdocs-llmstxt)
+> - [https://github.com/oprypin/markdown-callouts](https://github.com/oprypin/markdown-callouts)
+>     - GtHub Callouts allowed scroll to bottom
+> - [https://github.com/lukasgeiter/mkdocs-awesome-nav](https://github.com/lukasgeiter/mkdocs-awesome-nav)
+> - [https://github.com/pawamoy/mkdocs-spellcheck](https://github.com/pawamoy/mkdocs-spellcheck)
+> - [https://github.com/costantinoai/mkdocs-task-collector](https://github.com/costantinoai/mkdocs-task-collector)
