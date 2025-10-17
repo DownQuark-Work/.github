@@ -1,6 +1,4 @@
-# Documentation available:
-# > https://www.mkdocs.org/
-## README.md coming soon
+**/.DS*
 
-This is the new static content generator for DownQuark.
-- Beginning with the `doqs` we will then (maybe) attempt to leverage it for the internal content of the site.
+.venv
+src/dist/
