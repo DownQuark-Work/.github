@@ -1,5 +1,20 @@
 # DownQuark
 
+---
+
+## Version Two
+
+> [!IMPORTANT]
+> [DownQuark](https://www.downquark.work) is currently be updated for a _version 2_ release).
+
+As part of the overhaul we have archived many of the _v1_ repositories.
+
+- All [Archived Repositories](https://github.com/orgs/DownQuark-Work/repositories) can still be accessed.
+- Or view only what is [relevant to _version 2_](https://github.com/orgs/DownQuark-Work/repositories?q=archived%3Afalse).
+  - Temporarily sparse as we continue defining  nad determining the direction for _version 2_.
+
+---
+
 ## Where the work philosophy mirrors the dance of subatomic particles.
 
 Dynamically choose our projects allows us to phase out structured timelines and focus on the realm of productivity.
