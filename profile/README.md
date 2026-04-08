@@ -5,9 +5,9 @@
 ## Version Two
 
 > [!IMPORTANT]
-> [DownQuark](https://www.downquark.work) is currently be updated for a _version 2_ release).
+> [DownQuark](https://www.downquark.work) is currently be updated for a _version 2_ release.
 
-As part of the overhaul we have archived many of the _v1_ repositories.
+> ### _As part of the overhaul we have archived many of the `v1` repositories._
 
 - All [Archived Repositories](https://github.com/orgs/DownQuark-Work/repositories) can still be accessed.
 - Or view only what is [relevant to _version 2_](https://github.com/orgs/DownQuark-Work/repositories?q=archived%3Afalse).
